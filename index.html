@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html ng-app="hms-app">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Hospital Management System</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="apple-touch-icon" href="apple-touch-icon.png">
+      <link rel="stylesheet" href="assets/css/vendor.css">
+      <link rel="stylesheet" href="assets/css/app-green.css">
+      <link rel="stylesheet" href="assets/css/custom.css">
+
+      <script src="libs/angular-1.5.0/angular.js"></script>
+      <script src="libs/angular-1.5.0/angular-ui-router.js"></script>
+      <script src="libs/angular-1.5.0/angular-resource.js"></script>
+      <script src="libs/angular-1.5.0/angular-animate.js"></script>
+      <script src="libs/angular-1.5.0/ui-bootstrap.min.js"></script>
+      <script src="libs/angular-1.5.0/ngStorage.min.js"></script>
+      <script src="libs/angular-1.5.0/angular-cookies.js"></script>
+
+      <script src="assets/js/vendor.js"></script>
+      <script src="assets/js/app.js"></script>
+      <!-- Theme initialization -->
+      <script src="app.js"></script>
+      <script src="controllers/main_controller.js"></script>
+  </head>
+  <body ng-controller="Main_Controller">
+    <div class="" ng-if="!is_loggedin">
+      <div ui-view></div>
+    </div>
+    <div class="" ng-if="is_loggedin">
+      <div class="main-wrapper">
+        <div class="app header-fixed sidebar-fixed" id="app">
+          <div ng-include="'views/header.html'"></div>
+          <div ng-include="'views/sidebar.html'" ></div>
+          <div ui-view ng-init="init()"></div>
+          <div ng-include="'views/footer.html'"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
