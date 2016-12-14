@@ -34,7 +34,7 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$co
    $scope.login = function(){
      loginService.login($scope.user).then(function(pRes) {
        if(pRes.data.statusCode == 200){
-         if($scope.user.isRemember){
+         if($scope.user.remember){
            $cookieStore.put('username', $scope.user.username);
            $cookieStore.put('password', $scope.user.password);
          }

@@ -26,7 +26,10 @@
       <script src="app.js"></script>
       <script src="controllers/main_controller.js"></script>
       <script src="controllers/registration_controller.js"></script>
+      <script src="services/main_services.js"></script>
       <script src="services/loginservice.js"></script>
+
+      <script src="directives/main_directive.js"></script>
   </head>
   <body ng-controller="Main_Controller" ng-init="getUserDetails()">
     <div class="" ng-if="!loggedin_success">
@@ -35,9 +38,9 @@
     <div class="" ng-if="loggedin_success">
       <div class="main-wrapper">
         <div class="app header-fixed sidebar-fixed" id="app">
-          <div ng-include="'views/header.html'"></div>
+          <div ng-include="'views/header.html'" ng-init="init()"></div>
           <div ng-include="'views/sidebar.html'" ></div>
-          <div ui-view ng-init="init()"></div>
+          <div ui-view></div>
           <div ng-include="'views/footer.html'"></div>
         </div>
       </div>

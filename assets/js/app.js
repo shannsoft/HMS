@@ -46,6 +46,9 @@ $(function() {
   		$itemActions.not($thisActionList).removeClass('active');
   		$thisActionList.toggleClass('active');
   	});
+		// $('#sidebar-menu, #customize-menu').metisMenu({
+		// 	activeClass: 'open'
+		// });
   });
 });
 
@@ -68,9 +71,6 @@ $(function() {
       });
     });
 
-    $('#sidebar-menu, #customize-menu').metisMenu({
-  		activeClass: 'open'
-  	});
   	$('#sidebar-collapse-btn').on('click', function(event){
   		event.preventDefault();
   		$("#app").addClass("sidebar-open");
