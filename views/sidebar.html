@@ -8,10 +8,14 @@
       <nav class="menu">
           <ul class="nav metismenu" id="sidebar-menu">
               <li ng-class="{'active':stateName=='dashboard'}">
-                  <a href=""> <i class="fa fa-home"></i>Dashboard</a>
+                  <a ui-sref="dashboard">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                  </a>
               </li>
-              <li class="">
-                  <a href=""> <i class="fa fa-user"></i>Patient Management</a>
+              <li class="{'active':stateName=='patientdetails'}">
+                <a ui-sref="patientdetails">
+                  <i class="fa fa-dashboard"></i> <span>Patient Management</span>
+                </a>
               </li>
               <li>
                   <a href=""> <i class="fa fa-user"></i>Item 2</a>

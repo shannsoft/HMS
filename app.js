@@ -12,6 +12,16 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
         url: '/login',
         controller:"Main_Controller"
     })
+    .state('patientdetails', {
+        templateUrl: 'views/patientlist.html',
+        url: '/patientdetails',
+        controller:"Main_Controller"
+    })
+    .state('editpatientdetails', {
+        templateUrl: 'views/edit.html',
+        url: '/editpatientdetails',
+        controller:"patientregistration_controller"
+    })
 });
 mainApp.run(function($rootScope) {
   $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams) {

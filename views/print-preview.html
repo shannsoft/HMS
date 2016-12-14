@@ -1,0 +1,192 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title> Hospital Management System </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="css/vendor.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <!-- Theme initialization -->
+        <script>
+            var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
+            {};
+            var themeName = themeSettings.themeName || '';
+            if (themeName)
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="css/app-' + themeName + '.css">');
+            }
+            else
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="css/app.css">');
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="main-wrapper">
+            <div class="app" id="app">
+                <header class="header">
+                    <div class="header-block header-block-collapse hidden-lg-up"> 
+						<button class="collapse-btn" id="sidebar-collapse-btn">
+							<i class="fa fa-bars"></i>
+						</button> 
+					</div>
+                      <div class="header-block header-block-nav">
+                        <ul class="nav-profile">
+                            <li class="profile dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <div class="img" style="background-image: url('assets/faces/3.jpg')"> </div> 
+									<span class="name">John Doe</span> 
+								</a>
+                                <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-user icon"></i> Profile </a>
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-bell icon"></i> Notifications </a>
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-gear icon"></i> Settings </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-power-off icon"></i> Logout </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </header>
+                <aside class="sidebar">
+                    <div class="sidebar-container">
+                        <div class="sidebar-header">
+                            <div class="brand">
+                                <a href="index.html" class="logo"><img src="assets/logo.png"> </a> 
+							</div>
+                        </div>
+                        <nav class="menu">
+                            <ul class="nav metismenu" id="sidebar-menu">
+                                <li>
+                                    <a href="index.html"> <i class="fa fa-user"></i>Patient Management</a>
+                                </li>
+                                <li>
+                                    <a href=""> <i class="fa fa-user"></i>Item 2</a>
+                                </li>
+                                <li>
+                                    <a href=""> <i class="fa fa-user"></i>Item 3</a>
+                                </li>
+                                <li>
+                                    <a href=""> <i class="fa fa-user"></i>Item 4</a>
+                                </li>
+                               
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+				<div class="sidebar-overlay" id="sidebar-overlay"></div>
+                <article class="content item-editor-page">
+                    <div class="title-block">
+                        <h3 class="title">
+							Print Preview
+						</h3> 
+					</div>
+					
+					<div class="row">
+						<div class="col-md-8 m-b-20">
+							<div class="card card-info">
+								<div class="card card-block">
+									<div class="row">
+										<div class="col-sm-6">
+											<img src="assets/logo.png">
+										</div>
+										<div class="col-sm-6 text-right">
+											<div class="clearfix">
+												<strong>Ref No :</strong> <span>01254623</span>
+											</div>
+											<div class="clearfix">
+												<strong>Date:</strong> <span>10/12/2016</span>
+											</div>
+										</div>
+									</div>
+									<div class="row m-t-40">
+										<div class="col-sm-12">
+											<div class="form-group">
+												<strong>Sir,</strong>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed eros mi. Morbi in diam pharetra, vulputate nisi sed, mattis ipsum. Aliquam placerat turpis ac mauris pharetra, quis ultricies urna porttitor. Vivamus ac ligula gravida, bibendum arcu id, rutrum metus. In lobortis, eros vitae congue volutpat</p>
+											</div>
+										</div>
+									</div>
+									<div class="row m-t-20">
+										<div class="col-md-12">
+											<table class="table table-bordered">
+												<tbody>
+													<tr>
+														<th scope="row">Employee ID</th>
+														<td>02</td>
+														
+													</tr>
+													<tr>
+														<th scope="row">FIrst Name</th>
+														<td>Jacob</td>
+													</tr>
+													<tr>
+														<th scope="row">Last Name</th>
+														<td>Larry</td>
+													</tr>
+													<tr>
+														<th scope="row">Email</th>
+														<td>jlarry@gmail.com</td>
+													</tr>
+													<tr>
+														<th scope="row">Gender</th>
+														<td>Male</td>
+													</tr>
+													<tr>
+														<th scope="row">Last Name</th>
+														<td>Larry</td>
+													</tr>
+													<tr>
+														<th scope="row">Email</th>
+														<td>jlarry@gmail.com</td>
+													</tr>
+													<tr>
+														<th scope="row">Gender</th>
+														<td>Male</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<button type="button" class="btn btn-primary pull-right">
+												Print
+											</button>
+										</div>
+									</div>
+									
+								</div>
+							</div>		
+                        </div>
+						
+					
+					</div>
+					
+					
+                </article>
+                <footer class="footer">
+                    
+                    <div class="footer-block author">
+                        <ul>
+                            <li> created by <a href="">Teknobiz</a> </li>
+                        </ul>
+                    </div>
+                </footer>
+           
+                
+            </div>
+        </div>
+
+		
+        <script src="js/vendor.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
