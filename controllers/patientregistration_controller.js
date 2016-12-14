@@ -1,12 +1,5 @@
 mainApp.controller('patientregistration_controller',function($scope,$rootScope,$state){
-  $rootScope.is_loggedin = true;
-
-  /*******************************************************/
-  /****This event is fired for javascript dependency******/
-  /*******************************************************/
-  $scope.gotoedit = function(){
-     $state.go('editpatientdetails');
-  }
+  $rootScope.is_loggedin = false;
   $scope.showModal = false;
   /***************************************************************************/
   /**************************This is use to show a pop up****************************/
