@@ -52,8 +52,25 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$co
         });
        }
        else{
-           Util.alertMessage('danger', pRes.data.data.message);
+           Util.alertMessage('danger', pRes.data.message);
        }
     })
+   }
+   /*******************************************************/
+   /*************This is use for  signout***************/
+   /*******************************************************/
+   $scope.signout = function(){
+     loginService.logout().then(function(pRes) {
+       if(pRes.data.statusCode == 200){
+         $rootScope.loggedin_success = false;
+         delete $localStorage.user;
+         setTimeout(function () {
+           $state.go("login");
+         }, 500);
+       }
+     },
+     function(err) {
+       console.log(">>>>>>>>>>>>>   ",err);
+     })
    }
 });

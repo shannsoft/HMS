@@ -12,5 +12,11 @@ mainApp.factory("loginService", function ($http,CONFIG,$localStorage) {
       });
       return response;
     },
+    logout: function () {
+      var response = $http.get(CONFIG.HTTP_HOST+"?reqmethod=logout",{
+         headers: {'Accesstoken':$localStorage.user.token}
+       });
+      return response;
+    },
 };
 });

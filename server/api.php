@@ -214,7 +214,7 @@ header('Access-Control-Allow-Origin: *');
 						$this->sendResponse(200,$this->messages['loginSuccess'],$users);
 				}
 				else {
-					$this->sendResponse(201,"failure","fail");
+					$this->sendResponse(201,"Invalid username or password","fail");
 				}
 			}
 			else{
