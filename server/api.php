@@ -11,6 +11,8 @@ header('Access-Control-Allow-Origin: *');
 	  const DB = "hms_db";
 		// adding table names
 		const usersTable = "user_table";
+		const departmentTable = "department_table";
+		const doctorTable = "doctor_table";
 		private $db = NULL;
 		private $proxy = NULL;
 		private $storeApiLogin = false;
@@ -50,7 +52,8 @@ header('Access-Control-Allow-Origin: *');
 		public $messages = array(
 				"loginSuccess" => "Successfully Logedin",
 				"userLogout" => "Successfully log out",
-				"changedPassword" => "Successfully Changed your password"
+				"changedPassword" => "Successfully Changed your password",
+				"dataFetched" => "Data Fetched Successfully"
 		);
 		public function __construct(){
 			parent::__construct();
@@ -97,6 +100,9 @@ header('Access-Control-Allow-Origin: *');
 					return $data;
 				}
     }
+		/*******************************************************/
+		/*****This function use for covvert json response*******/
+		/*******************************************************/
     private function formatJson($jsonData){
         $formatted = $jsonData;
         $formatted = str_replace('"{', '{', $formatted);
@@ -104,6 +110,9 @@ header('Access-Control-Allow-Origin: *');
         $formatted = str_replace('\\', '', $formatted);
         return $formatted;
     }
+		/*******************************************************/
+		/*****This function use for generate access token*******/
+		/*******************************************************/
 		public function generateRandomString($length = 60) {
 		    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		    $charactersLength = strlen($characters);
@@ -113,6 +122,9 @@ header('Access-Control-Allow-Origin: *');
 		    }
 		    return $randomString;
 		}
+		/*******************************************************/
+		/**********This function use for get the record*********/
+		/*******************************************************/
 		public function executeGenericDQLQuery($query){
 			try{
 				if(!$this->db){
@@ -132,6 +144,9 @@ header('Access-Control-Allow-Origin: *');
 				$this->response($this->json($response), 200);
 			}
 		}
+		/*******************************************************/
+		/********This function use for update the record********/
+		/*******************************************************/
     public function executeGenericDMLQuery($query){
       try{
         $result = mysql_query($query, $this->db);
@@ -147,6 +162,9 @@ header('Access-Control-Allow-Origin: *');
         $this->response($this->json($response), 200);
       }
     }
+		/*******************************************************/
+		/**********This function use for insert record**********/
+		/*******************************************************/
     public function executeGenericInsertQuery($query){
         try{
             $result = mysql_query($query, $this->db);
@@ -162,6 +180,9 @@ header('Access-Control-Allow-Origin: *');
             $this->response($this->json($response), 200);
         }
     }
+		/*******************************************************/
+		/********This function use for send the response********/
+		/*******************************************************/
 		public function sendResponse($statusCode,$message = null ,$data = null){
 			$response = array();
 			$response['statusCode'] = $statusCode;
@@ -169,6 +190,9 @@ header('Access-Control-Allow-Origin: *');
 			$response['data'] = $data;
 			$this->response($this->json($response), 200);
     }
+		/*******************************************************/
+	  /**************This function use for login**************/
+	  /*******************************************************/
 		public function login() {
 			if(!isset($this->_request['user_name']) || !isset($this->_request['password']))
 				$this->sendResponse(202,"Invalid user name or password");
@@ -197,17 +221,23 @@ header('Access-Control-Allow-Origin: *');
 				$this->sendResponse(202,"Invalid user name or password");
 			}
     }
+		/*******************************************************/
+	  /**************This function use for logout*************/
+	  /*******************************************************/
 		public function logout(){
 			$headers = apache_request_headers(); // to get all the headers
 			$accessToken = $headers['Accesstoken'];
 			if($accessToken){
-				$sql = "update ".self::usersTable." set user_token='' where user_token='$accessToken'";
+				$sql = "update ".self::usersTable." set token='' where token='$accessToken'";
 				$result = $this->executeGenericDMLQuery($sql);
 				if($result){
 					$this->sendResponse(200,$this->messages['userLogout']);
 				}
 			}
 		}
+		/*******************************************************/
+		/**********This function use for change password********/
+		/*******************************************************/
 		public function changePassword(){
 			$headers = apache_request_headers();
 			$accessToken = $headers['Accesstoken'];
@@ -218,6 +248,9 @@ header('Access-Control-Allow-Origin: *');
 				$this->sendResponse(200,'Successfully Changed Your Password');
 			}
 		}
+		/*******************************************************/
+		/**********This function use for password check*********/
+		/*******************************************************/
 	 	public function checkPassword(){
 		    	$headers = apache_request_headers();
 		    	$accessToken = $headers['Accesstoken'];
@@ -233,6 +266,39 @@ header('Access-Control-Allow-Origin: *');
 							$this->sendResponse(201,"failure");
 						}
 					}
+		}
+		/*******************************************************/
+		/******This function use for get the department list****/
+		/*******************************************************/
+		public function getDepartment(){
+			$sql = "select * from ".self::departmentTable;
+			$rows = $this->executeGenericDQLQuery($sql);
+			$department = array();
+			for($i = 0; $i < sizeof($rows); $i ++){
+				$department[$i]['id'] = $rows[$i]['dep_id'];
+				$department[$i]['name'] = $rows[$i]['dep_name'];
+			}
+			$this->sendResponse(200,$this->messages['dataFetched'],$department);
+		}
+		/*******************************************************/
+		/*This function use for get the doctor of a particular dep**/
+		/*******************************************************/
+		public function getDoctor(){
+			$sql = "select * from ".self::doctorTable;
+			if(isset($this->_request['dep_id'])){
+				$dep_id = $this->_request['dep_id'];
+				$sql .= " where dep_id = ".$dep_id;
+			}
+			$rows = $this->executeGenericDQLQuery($sql);
+			$doctor = array();
+			for($i = 0; $i < sizeof($rows); $i ++){
+				$doctor[$i]['doct_id'] = $rows[$i]['doct_id'];
+				$doctor[$i]['doct_name'] = $rows[$i]['doct_name'];
+				$doctor[$i]['doct_price'] = $rows[$i]['doct_price'];
+				$doctor[$i]['doct_location'] = $rows[$i]['doct_location'];
+				$doctor[$i]['doct_timing'] = $rows[$i]['doct_timing'];
+			}
+			$this->sendResponse(200,$this->messages['dataFetched'],$doctor);
 		}
 	}
 	$api = new API;
