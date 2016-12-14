@@ -17,25 +17,40 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
         url: '/login',
         controller:"Main_Controller",
         onEnter: function($localStorage, $state) {
-           if (!$localStorage.user) {
+           if ($localStorage.user) {
                $state.go('dashboard');
            }
          }
     })
-    .state('patientdetails', {
-        templateUrl: 'views/patientlist.html',
-        url: '/patientdetails',
-        controller:"Main_Controller",
+    .state('registeredList', {
+        templateUrl: 'views/registration/patient_list.html',
+        url: '/registeredList',
+        controller:"Registration_Controller",
         onEnter: function($localStorage, $state) {
            if (!$localStorage.user) {
                $state.go('login');
            }
          }
     })
-    .state('editpatientdetails', {
-        templateUrl: 'views/edit.html',
-        url: '/editpatientdetails',
-        controller:"patientregistration_controller"
+    .state('newRegistration', {
+        templateUrl: 'views/registration/patient_registration.html',
+        url: '/newRegistration',
+        controller:"Registration_Controller",
+        onEnter: function($localStorage, $state) {
+           if (!$localStorage.user) {
+               $state.go('login');
+           }
+         }
+    })
+    .state('registerEdit', {
+        templateUrl: 'views/registration/patient_edit.html',
+        url: '/registerEdit',
+        controller:"Registration_Controller",
+        onEnter: function($localStorage, $state) {
+           if (!$localStorage.user) {
+               $state.go('login');
+           }
+         }
     })
 });
 mainApp.constant('CONFIG', {

@@ -25,14 +25,14 @@
       <!-- Theme initialization -->
       <script src="app.js"></script>
       <script src="controllers/main_controller.js"></script>
-      <script src="controllers/patientregistration_controller.js"></script>
+      <script src="controllers/registration_controller.js"></script>
       <script src="services/loginservice.js"></script>
   </head>
-  <body ng-controller="Main_Controller">
-    <div class="" ng-if="!is_loggedin">
+  <body ng-controller="Main_Controller" ng-init="getUserDetails()">
+    <div class="" ng-if="!loggedin_success">
       <div ui-view></div>
     </div>
-    <div class="" ng-if="is_loggedin">
+    <div class="" ng-if="loggedin_success">
       <div class="main-wrapper">
         <div class="app header-fixed sidebar-fixed" id="app">
           <div ng-include="'views/header.html'"></div>

@@ -12,19 +12,13 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                   </a>
               </li>
-              <li ng-class="{'active':stateName=='patientdetails'}">
-                <a ui-sref="patientdetails">
+              <li ng-class="{'active':stateName=='registeredList' || stateName=='newRegistration' || stateName=='registerEdit'}">
+                <a ui-sref="registeredList">
                   <i class="fa fa-user"></i> <span>Patient Management</span>
                 </a>
               </li>
               <li>
-                  <a href=""> <i class="fa fa-user"></i>Item 2</a>
-              </li>
-              <li>
-                  <a href=""> <i class="fa fa-user"></i>Item 3</a>
-              </li>
-              <li>
-                  <a href=""> <i class="fa fa-user"></i>Item 4</a>
+                  <a href=""> <i class="fa fa-user"></i>Settings</a>
               </li>
           </ul>
       </nav>

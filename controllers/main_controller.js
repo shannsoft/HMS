@@ -1,9 +1,8 @@
-mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$cookieStore,Util,$localStorage,$state){
-  $rootScope.is_loggedin = false;
+mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$cookieStore,Util,$localStorage,$state,$timeout){
   $scope.loginPage = function(){
     $scope.user = {};
-    if($cookieStore.get('user_name')){
-      $scope.user.username = $cookieStore.get('user_name');
+    if($cookieStore.get('username')){
+      $scope.user.username = $cookieStore.get('username');
       $scope.user.password = $cookieStore.get('password');
     }
   }
@@ -22,11 +21,11 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$co
   $scope.getUserDetails = function(){
    if($localStorage.user){
      $rootScope.logedIn_user = $localStorage.user;
-     $rootScope.is_loggedin  = true;
+     $rootScope.loggedin_success = true;
    }
    else{
      $rootScope.logedIn_user = {};
-     $rootScope.is_loggedin  = false;
+     $rootScope.loggedin_success = false;
    }
  }
   /*******************************************************/
@@ -35,6 +34,10 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$co
    $scope.login = function(){
      loginService.login($scope.user).then(function(pRes) {
        if(pRes.data.statusCode == 200){
+         if($scope.user.isRemember){
+           $cookieStore.put('username', $scope.user.username);
+           $cookieStore.put('password', $scope.user.password);
+         }
          $localStorage.user = {
            "id"           : pRes.data.data.id,
            "user_name"    : pRes.data.data.user_name,
@@ -42,9 +45,11 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$co
            "last_name"    : pRes.data.data.last_name,
            "token"        : pRes.data.data.token,
          }
-        localStorage.setItem("token",pRes.data.data.token);
-         $scope.getUserDetails();
-          $state.go("dashboard");
+         localStorage.setItem("token",pRes.data.data.token);
+         $timeout(function(){
+           $scope.getUserDetails();
+           $state.go("dashboard");
+        });
        }
        else{
            Util.alertMessage('danger', pRes.data.data.message);

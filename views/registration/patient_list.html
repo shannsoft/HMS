@@ -1,0 +1,134 @@
+<article class="content items-list-page">
+   <div class="title-search-block">
+     <div class="title-block">
+         <div class="row">
+             <div class="col-md-6">
+                 <h3 class="title">
+                     Patient List
+                     <a ui-sref="newRegistration" class="btn btn-primary btn-sm rounded-s m-l-20">
+                       Add New
+                     </a>
+                     <a href="#" class="btn btn-danger btn-sm rounded-s m-l-5">
+                       Delete
+                     </a>
+                 </h3>
+             </div>
+         </div>
+     </div>
+     <div class="items-search">
+         <form class="form-inline">
+              <div class="input-group"> <input type="text" class="form-control boxed rounded-s" placeholder="Search for...">
+                <span class="input-group-btn">
+                   <button class="btn btn-secondary rounded-s" type="button">
+                     <i class="fa fa-search"></i>
+                   </button>
+               </span>
+           </div>
+         </form>
+     </div>
+   </div>
+    <div class="card items">
+      <ul class="item-list striped">
+        <li class="item item-list-header hidden-sm-down">
+          <div class="item-row">
+            <div class="item-col fixed item-col-check">
+              <label class="item-check" id="select-all-items">
+                <input type="checkbox" class="checkbox">
+                <span></span>
+              </label>
+            </div>
+
+            <div class="item-col item-col-header item-col-title">
+              <div> <span>Name</span> </div>
+            </div>
+            <div class="item-col item-col-header item-col-author">
+              <div class="no-overflow"> <span>Reason</span> </div>
+            </div>
+            <div class="item-col item-col-header item-col-author">
+              <div class="no-overflow"> <span>Console Doctor</span> </div>
+            </div>
+            <div class="item-col item-col-header item-col-date">
+              <div> <span>Registration Date</span> </div>
+            </div>
+            <div class="item-col item-col-header fixed item-col-actions-dropdown"> </div>
+          </div>
+        </li>
+        <li class="item">
+          <div class="item-row">
+            <div class="item-col fixed item-col-check">
+              <label class="item-check" id="select-all-items">
+                <input type="checkbox" class="checkbox">
+                <span></span>
+              </label>
+            </div>
+            <div class="item-col fixed pull-left item-col-title">
+              <div>
+                <a href="#" class="">
+                  <h4 class="item-title">Santosh Kumar Majhi</h4>
+                </a>
+              </div>
+            </div>
+            <div class="item-col item-col-author">
+              <div class="no-overflow"> <a href="">Hart Patients</a> </div>
+            </div>
+            <div class="item-col item-col-author">
+              <div class="no-overflow"> <a href="">Meadow Katheryne</a> </div>
+            </div>
+            <div class="item-col item-col-date">
+              <div class="no-overflow"> 04 DEC 10:45 </div>
+            </div>
+            <div class="item-col fixed item-col-actions-dropdown">
+              <div class="item-actions-dropdown">
+                <a class="item-actions-toggle-btn">
+                  <span class="inactive">
+                    <i class="fa fa-cog"></i>
+                  </span>
+                  <span class="active">
+                    <i class="fa fa-chevron-circle-right"></i>
+                  </span>
+                </a>
+                <div class="item-actions-block">
+                  <ul class="item-actions-list">
+                    <li>
+                      <a class="remove" href="" data-toggle="modal" data-target="#confirm-modal" ng-click="open()"> <i class="fa fa-trash-o "></i> </a>
+                    </li>
+                    <li>
+                      <a class="edit"  ui-sref="registerEdit"> <i class="fa fa-pencil"></i> </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+   <nav class="text-xs-right">
+       <ul class="pagination">
+           <li class="page-item"> <a class="page-link" href="">Prev</a> </li>
+           <li class="page-item active"> <a class="page-link" href="">1</a> </li>
+           <li class="page-item"> <a class="page-link" href="">2</a> </li>
+           <li class="page-item"> <a class="page-link" href="">3</a> </li>
+           <li class="page-item"> <a class="page-link" href="">4</a> </li>
+           <li class="page-item"> <a class="page-link" href="">5</a> </li>
+           <li class="page-item"> <a class="page-link" href="">Next</a> </li>
+       </ul>
+   </nav>
+</article>
+<div class="modal fade in" id="confirm-modal"  ng-model="showModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Delete confirmation</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">No</button>
+          <button type="button" class="btn btn-primary" ng-click="ok()">Yes</button>
+        </div>
+      </div>
+    </div>
+</div>

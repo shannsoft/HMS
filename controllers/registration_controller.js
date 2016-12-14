@@ -1,5 +1,4 @@
-mainApp.controller('patientregistration_controller',function($scope,$rootScope,$state){
-  $rootScope.is_loggedin = false;
+mainApp.controller('Registration_Controller',function($scope,$rootScope,$state){
   $scope.showModal = false;
   /***************************************************************************/
   /**************************This is use to show a pop up****************************/
@@ -12,6 +11,7 @@ mainApp.controller('patientregistration_controller',function($scope,$rootScope,$
   /***************************************************************************/
   $scope.ok = function () {
     $scope.showModal = false;
+    console.log(12121);
   };
   /***************************************************************************/
   /**************************This is use to hide a pop up****************************/
