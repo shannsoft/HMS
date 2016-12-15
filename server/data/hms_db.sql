@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2016 at 08:46 AM
+-- Generation Time: Dec 15, 2016 at 11:33 AM
 -- Server version: 10.0.17-MariaDB
 -- PHP Version: 5.6.14
 
@@ -89,9 +89,10 @@ CREATE TABLE `patient_previous_history` (
 
 CREATE TABLE `registration_table` (
   `reg_id` int(11) NOT NULL,
-  `reg_no` int(11) NOT NULL,
-  `first_name` int(11) NOT NULL,
-  `last_name` int(11) NOT NULL,
+  `reg_no` text NOT NULL,
+  `registration_type` text NOT NULL,
+  `first_name` text NOT NULL,
+  `last_name` text NOT NULL,
   `gender` text NOT NULL,
   `mobile` int(12) NOT NULL,
   `email` text NOT NULL,
@@ -104,7 +105,7 @@ CREATE TABLE `registration_table` (
   `marital_status` text NOT NULL,
   `religion` text NOT NULL,
   `prof_type` text,
-  `school` int(11) DEFAULT NULL,
+  `school` text,
   `employer` text,
   `business_type` text,
   `other` text,
@@ -112,11 +113,24 @@ CREATE TABLE `registration_table` (
   `guardian_name` text,
   `guardian_mobile` int(12) DEFAULT NULL,
   `address` text,
-  `dep_id` int(11) NOT NULL,
-  `doct_id` int(11) NOT NULL,
+  `dep_id` int(11) DEFAULT NULL,
+  `doct_id` int(11) DEFAULT NULL,
   `hear_about_us` text,
-  `reason` text
+  `reason` text,
+  `reg_date` date NOT NULL,
+  `is_deleted` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registration_table`
+--
+
+INSERT INTO `registration_table` (`reg_id`, `reg_no`, `registration_type`, `first_name`, `last_name`, `gender`, `mobile`, `email`, `street`, `city`, `state`, `zip`, `dob`, `age`, `marital_status`, `religion`, `prof_type`, `school`, `employer`, `business_type`, `other`, `guardian_type`, `guardian_name`, `guardian_mobile`, `address`, `dep_id`, `doct_id`, `hear_about_us`, `reason`, `reg_date`, `is_deleted`) VALUES
+(2, 'HMS/16/2', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, '', '', '', '', 0, '0000-00-00', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 0),
+(3, 'HMS/16/3', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, '', 'Test', 'Test', 'Test', 0, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(4, 'HMS/16/4', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, '', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(5, 'HMS/16/5', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(6, 'HMS/16/6', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0);
 
 -- --------------------------------------------------------
 
@@ -139,7 +153,7 @@ CREATE TABLE `user_table` (
 --
 
 INSERT INTO `user_table` (`id`, `first_name`, `last_name`, `user_name`, `password`, `roll_type`, `token`) VALUES
-(1, 'Santosh ', 'Majhi', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'Ae54XpqOZC6NVG5EsXQrOhmLI05IoY0UxwzpouLOFf2ezBofQVgXG3DXPkYl');
+(1, 'Santosh ', 'Majhi', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aw8M5YvsRchuqLaeiLmxoOCJdZ7EJTCFoBjCaJVPynGau7iXs2Z3qLtNQmY1');
 
 --
 -- Indexes for dumped tables
@@ -162,6 +176,12 @@ ALTER TABLE `doctor_table`
 --
 ALTER TABLE `patient_previous_history`
   ADD PRIMARY KEY (`his_id`);
+
+--
+-- Indexes for table `registration_table`
+--
+ALTER TABLE `registration_table`
+  ADD PRIMARY KEY (`reg_id`);
 
 --
 -- Indexes for table `user_table`
@@ -188,6 +208,11 @@ ALTER TABLE `doctor_table`
 --
 ALTER TABLE `patient_previous_history`
   MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `registration_table`
+--
+ALTER TABLE `registration_table`
+  MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user_table`
 --
