@@ -1,4 +1,4 @@
-mainApp.factory("loginService", function ($http,CONFIG,$localStorage) {
+mainApp.factory("LoginService", function ($http,CONFIG,$localStorage) {
   return{
     login: function (data) {
       var _serializedData = $.param({"reqmethod": 'login', "user_name":data.username,"password":data.password});
@@ -17,6 +17,6 @@ mainApp.factory("loginService", function ($http,CONFIG,$localStorage) {
          headers: {'Accesstoken':$localStorage.user.token}
        });
       return response;
-    },
-};
+    }
+  };
 });

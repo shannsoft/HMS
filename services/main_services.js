@@ -19,3 +19,19 @@ mainApp.factory('translateService',function(){
         }
     }
 });
+mainApp.factory('RegisterService',function($http,CONFIG,$localStorage){
+    return {
+      register: function(data,operation){
+        var _serializedData = $.param({"reqmethod": 'register', 'operation':operation,'register_data':data});
+        var response = $http({
+            method: 'POST',
+            url: CONFIG.HTTP_HOST,
+            data : _serializedData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded','Accesstoken':$localStorage.user.token
+            }
+        });
+        return response;
+      },
+    }
+});

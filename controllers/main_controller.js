@@ -1,4 +1,4 @@
-mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$cookieStore,Util,$localStorage,$state,$timeout){
+mainApp.controller('Main_Controller',function($scope,$rootScope,LoginService,$cookieStore,Util,$localStorage,$state,$timeout){
   $scope.loginPage = function(){
     $scope.user = {};
     if($cookieStore.get('username')){
@@ -32,7 +32,7 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$co
   /*************This is use for  user login***************/
   /*******************************************************/
    $scope.login = function(){
-     loginService.login($scope.user).then(function(pRes) {
+     LoginService.login($scope.user).then(function(pRes) {
        if(pRes.data.statusCode == 200){
          if($scope.user.remember){
            $cookieStore.put('username', $scope.user.username);
@@ -60,7 +60,7 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,loginService,$co
    /*************This is use for  signout***************/
    /*******************************************************/
    $scope.signout = function(){
-     loginService.logout().then(function(pRes) {
+     LoginService.logout().then(function(pRes) {
        if(pRes.data.statusCode == 200){
          $rootScope.loggedin_success = false;
          delete $localStorage.user;

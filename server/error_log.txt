@@ -5,3 +5,7 @@ invalid service:getplanbystatus at 2016-07-16 16:21:55
 invalid service:getplanbystatus at 2016-07-16 16:23:56
 invalid service:getplanbystatus at 2016-07-17 07:55:52
 invalid service:getplanbystatus at 2016-07-17 07:56:10
+invalid service:register?register_data={"reg_type":"opd","first_name":"santosh","last_name" : "majhi","gender":"male","mobile":"9438753143","street":"test","city":"test","state":"test","zip_code":"test","dob":"1982-10-10","age":"30","marital_status":"single","religion":"hindu","reg_date":"2016-12-12"} at 2016-12-15 07:35:47
+invalid service:register?register_data={"reg_type":"opd","first_name":"santosh","last_name" : "majhi","gender":"male","mobile":"9438753143","street":"test","city":"test","state":"test","zip_code":"test","dob":"1982-10-10","age":"30","marital_status":"single","religion":"hindu","reg_date":"2016-12-12"} at 2016-12-15 07:36:09
+invalid service:register?register_data={} at 2016-12-15 07:36:19
+invalid service:register?register_data={} at 2016-12-15 07:36:42

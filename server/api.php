@@ -13,6 +13,7 @@ header('Access-Control-Allow-Origin: *');
 		const usersTable = "user_table";
 		const departmentTable = "department_table";
 		const doctorTable = "doctor_table";
+		const registerTable = "registration_table";
 		private $db = NULL;
 		private $proxy = NULL;
 		private $storeApiLogin = false;
@@ -304,38 +305,121 @@ header('Access-Control-Allow-Origin: *');
 		/******This function use for register a patient*********/
 		/*******************************************************/
 		public function register(){
-			if(isset($this->_request['register_data'])){
-				$reg_data = $this->_request['register_data'];
-				$reg_type = $reg_data['reg_type'];
-				$reg_fname = $reg_data['first_name'];
-				$reg_lname = $reg_data['last_name'];
-				$reg_gen = $reg_data['gender'];
-				$reg_mobile = $reg_data['mobile'];
-				$reg_email = (isset($reg_data['email'])) ? $reg_data['email'] : null;
-				$reg_street = $reg_data['street'];
-				$reg_city = $reg_data['city'];
-				$reg_state = $reg_data['state'];
-				$reg_zip = $reg_data['zip_code'];
-				$reg_dob = $reg_data['dob'];
-				$reg_age = $reg_data['age'];
-				$reg_marital = $reg_data['marital_status'];
-				$reg_religion = $reg_data['religion'];
-				$reg_regDate = $reg_data['reg_date'];
-				$reg_proType = (isset($reg_data['pro_type'])) ? $reg_data['pro_type'] : null;
-				$reg_school = (isset($reg_data['school'])) ? $reg_data['school'] : null;
-				$reg_employer = (isset($reg_data['employer'])) ? $reg_data['employer'] : null;
-				$reg_busi_type = (isset($reg_data['business_type'])) ? $reg_data['business_type'] : null;
-				$reg_others = (isset($reg_data['others'])) ? $reg_data['others'] : null;
-				$reg_guardian_type = (isset($reg_data['guardian_type'])) ? $reg_data['guardian_type'] : null;
-				$reg_guardian_name = (isset($reg_data['guardian_name'])) ? $reg_data['guardian_name'] : null;
-				$reg_guardian_mobile = (isset($reg_data['guardian_mobile'])) ? $reg_data['guardian_mobile'] : null;
-				$reg_guardian_address = (isset($reg_data['guardian_address'])) ? $reg_data['guardian_address'] : null;
-				$reg_dep_id = (isset($reg_data['dep_id'])) ? $reg_data['dep_id'] : null;
-				$reg_doct_id = (isset($reg_data['doct_id'])) ? $reg_data['doct_id'] : null;
-				$reg_hear_about_us = (isset($reg_data['hear_about_us'])) ? $reg_data['hear_about_us'] : null;
-				$reg_reason = (isset($reg_data['reason'])) ? $reg_data['reason'] : null;
-				$reg_is_deleted = 0;
+			$headers = apache_request_headers(); // to get all the headers
+			$accessToken = $headers['Accesstoken'];
+			if(!isset($this->_request['operation']))
+				$this->sendResponse(400,'Operation not Defined');
+			if(!$accessToken)
+				$this->sendResponse(401,'Access Denied');
+			$sql = null;
+			switch ($this->_request['operation']) {
+				case 'create':
+					if(isset($this->_request['register_data'])){
+						$reg_data = $this->_request['register_data'];
+						$reg_type = $reg_data['reg_type'];
+						$reg_fname = $reg_data['first_name'];
+						$reg_lname = $reg_data['last_name'];
+						$reg_gen = $reg_data['gender'];
+						$reg_mobile = $reg_data['mobile'];
+						$reg_email = (isset($reg_data['email'])) ? $reg_data['email'] : null;
+						$reg_street = $reg_data['street'];
+						$reg_city = $reg_data['city'];
+						$reg_state = $reg_data['state'];
+						$reg_zip = $reg_data['zip_code'];
+						$reg_dob = $reg_data['dob'];
+						$reg_age = $reg_data['age'];
+						$reg_marital = $reg_data['marital_status'];
+						$reg_religion = $reg_data['religion'];
+						$reg_regDate = $reg_data['reg_date'];
+						$reg_proType = (isset($reg_data['pro_type'])) ? $reg_data['pro_type'] : null;
+						$reg_school = (isset($reg_data['school'])) ? $reg_data['school'] : null;
+						$reg_employer = (isset($reg_data['employer'])) ? $reg_data['employer'] : null;
+						$reg_busi_type = (isset($reg_data['business_type'])) ? $reg_data['business_type'] : null;
+						$reg_others = (isset($reg_data['others'])) ? $reg_data['others'] : null;
+						$reg_guardian_type = (isset($reg_data['guardian_type'])) ? $reg_data['guardian_type'] : null;
+						$reg_guardian_name = (isset($reg_data['guardian_name'])) ? $reg_data['guardian_name'] : null;
+						$reg_guardian_mobile = (isset($reg_data['guardian_mobile'])) ? $reg_data['guardian_mobile'] : null;
+						$reg_guardian_address = (isset($reg_data['guardian_address'])) ? $reg_data['guardian_address'] : null;
+						$reg_dep_id = (isset($reg_data['dep_id'])) ? $reg_data['dep_id'] : null;
+						$reg_doct_id = (isset($reg_data['doct_id'])) ? $reg_data['doct_id'] : null;
+						$reg_hear_about_us = (isset($reg_data['hear_about_us'])) ? $reg_data['hear_about_us'] : null;
+						$reg_reason = (isset($reg_data['reason'])) ? $reg_data['reason'] : null;
+						$reg_is_deleted = 0;
+						$sql = "insert into ".self::registerTable."(registration_type,first_name,last_name,gender,mobile,email,street,city,state,zip,dob,age,marital_status,religion,prof_type,school,employer,business_type,other,guardian_type,guardian_name,guardian_mobile,address,dep_id,doct_id,hear_about_us,reason,reg_date,is_deleted)
+						values('$reg_type','$reg_fname','$reg_lname','$reg_gen','$reg_mobile','$reg_email',
+						'$reg_street','$reg_city','$reg_state','$reg_zip','$reg_dob','$reg_age',
+						'$reg_marital','$reg_religion','$reg_proType','$reg_school','$reg_employer','$reg_busi_type',
+						'$reg_others','$reg_guardian_type','$reg_guardian_name','$reg_guardian_mobile','$reg_guardian_address','$reg_dep_id',
+						'$reg_doct_id','$reg_hear_about_us','$reg_reason','$reg_regDate','$reg_is_deleted')";
+						$rows = $this->executeGenericDMLQuery($sql);
+						if($rows){
+							$id = mysql_insert_id();
+							$reg_no = "HMS/16/".$id;
+							$sql = "update ".self::registerTable." set reg_no='$reg_no' where reg_id=".$id;
+							$updated = $this->executeGenericDMLQuery($sql);
+							$data = array();
+							$data['id'] = $id;
+							$this->sendResponse(200,'Successfully Registered',$data);
+						}
+					}
+					break;
+				case 'get':
+						$reg_data = isset($this->_request['register_data']) ? $this->_request['register_data'] : $this->_request;
+						$sql = "SELECT * FROM ".self::registerTable." where is_deleted = 0";
+						if(isset($reg_data['id']))
+							$sql .= " AND reg_id=".$reg_data['id'];
+						$rows = $this->executeGenericDQLQuery($sql);
+						$register = array();
+						for($i = 0; $i < sizeof($rows); $i++) {
+							$register[$i]['id'] = $rows[$i]['reg_id'];
+							$register[$i]['reg_no'] = $rows[$i]['reg_no'];
+							$register[$i]['registration_type'] = $rows[$i]['registration_type'];
+							$register[$i]['first_name'] = $rows[$i]['first_name'];
+							$register[$i]['last_name'] = $rows[$i]['last_name'];
+							$register[$i]['gender'] = $rows[$i]['gender'];
+							$register[$i]['mobile'] = $rows[$i]['mobile'];
+							$register[$i]['email'] = $rows[$i]['email'];
+							$register[$i]['street'] = $rows[$i]['street'];
+							$register[$i]['city'] = $rows[$i]['city'];
+							$register[$i]['state'] = $rows[$i]['state'];
+							$register[$i]['zip'] = $rows[$i]['zip'];
+							$register[$i]['dob'] = $rows[$i]['dob'];
+							$register[$i]['age'] = $rows[$i]['age'];
+							$register[$i]['marital_status'] = $rows[$i]['marital_status'];
+							$register[$i]['religion'] = $rows[$i]['religion'];
+							$register[$i]['prof_type'] = $rows[$i]['prof_type'];
+							$register[$i]['school'] = $rows[$i]['school'];
+							$register[$i]['employer'] = $rows[$i]['employer'];
+							$register[$i]['business_type'] = $rows[$i]['business_type'];
+							$register[$i]['other'] = $rows[$i]['other'];
+							$register[$i]['guardian_type'] = $rows[$i]['guardian_type'];
+							$register[$i]['guardian_name'] = $rows[$i]['guardian_name'];
+							$register[$i]['guardian_mobile'] = $rows[$i]['guardian_mobile'];
+							$register[$i]['address'] = $rows[$i]['address'];
+							$register[$i]['dep_id'] = $rows[$i]['dep_id'];
+							$register[$i]['doct_id'] = $rows[$i]['doct_id'];
+							$register[$i]['hear_about_us'] = $rows[$i]['hear_about_us'];
+							$register[$i]['reason'] = $rows[$i]['reason'];
+							$register[$i]['reg_date'] = $rows[$i]['reg_date'];
+							$register[$i]['is_deleted'] = $rows[$i]['is_deleted'];
+						}
+						$this->sendResponse(200,$this->messages['dataFetched'],$register);
+						break;
+					case 'delete':
+						$reg_data = isset($this->_request['register_data']) ? $this->_request['register_data'] : $this->_request;
+						$sql = "update ".self::registerTable." set is_deleted=1 where reg_id=".$reg_data['id'];
+						$result = $this->executeGenericDMLQuery($sql);
+						if($result){
+							$this->sendResponse(200,"Successfully Deleted");
+						}
+					break;
 			}
+		}
+		/*******************************************************/
+		/******This function use for get the register **********/
+		/*******************************************************/
+		public function getRegister(){
+
 		}
 	}
 	$api = new API;

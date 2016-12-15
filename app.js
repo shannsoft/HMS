@@ -44,7 +44,17 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('registerEdit', {
         templateUrl: 'views/registration/patient_edit.html',
-        url: '/registerEdit',
+        url: '/registerEdit/:reg_id',
+        controller:"Registration_Controller",
+        onEnter: function($localStorage, $state) {
+           if (!$localStorage.user) {
+               $state.go('login');
+           }
+         }
+    })
+    .state('detailsView', {
+        templateUrl: 'views/registration/patient_view.html',
+        url: '/detailsView/:reg_id',
         controller:"Registration_Controller",
         onEnter: function($localStorage, $state) {
            if (!$localStorage.user) {
