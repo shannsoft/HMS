@@ -18,9 +18,9 @@
      </div>
      <div class="items-search">
          <form class="form-inline">
-              <div class="input-group"> <input type="text" class="form-control boxed rounded-s" placeholder="Search for...">
+              <div class="input-group"> <input type="text" ng-model="str" class="form-control boxed rounded-s" placeholder="Registration No...">
                 <span class="input-group-btn">
-                   <button class="btn btn-secondary rounded-s" type="button">
+                   <button class="btn btn-secondary rounded-s" type="button" ng-click="search(str)">
                      <i class="fa fa-search"></i>
                    </button>
                </span>
@@ -44,16 +44,15 @@
             <div class="item-col item-col-header item-col-author">
               <div class="no-overflow"> <span>Registration Type</span> </div>
             </div>
-            <div class="item-col item-col-header item-col-date">
+            <div class="item-col item-col-header item-col-author">
               <div> <span>Registration Date</span> </div>
             </div>
             <div class="item-col item-col-header item-col-date">
               <div> <span>Option</span> </div>
             </div>
-            <div class="item-col item-col-header fixed item-col-actions-dropdown"> </div>
           </div>
         </li>
-        <li class="item" ng-repeat="reg in registerList">
+        <li class="item" ng-repeat="reg in registerList" ng-hide="searchString != 'All' && searchString != reg.reg_no">
           <div class="item-row">
             <div class="item-col fixed pull-left item-col-title">
               <div>
@@ -71,14 +70,14 @@
             <div class="item-col item-col-author">
               <div class="no-overflow">{{reg.registration_type}}</div>
             </div>
-            <div class="item-col item-col-date">
+            <div class="item-col item-col-author">
               <div class="no-overflow">{{reg.reg_date}}</div>
             </div>
             <div class="item-col item-col-date">
               <div class="">
-                <a class="view"  ui-sref="registerEdit({reg_id:reg.id})"> <i class="fa fa-pencil"></i> </a>
-                <a class="edit"  ui-sref="detailsView({reg_id:reg.id})"> <i class="fa fa-pencil"></i> </a>
-                <a class="remove" href="" data-toggle="modal" data-target="#confirm-modal" ng-click="open()"> <i class="fa fa-trash-o "></i> </a>
+                <a class="check"  ui-sref="detailsView({reg_id:reg.id})"> <i class="fa fa-eye"></i> </a>
+                <a class="edit"  ui-sref="registerEdit({reg_id:reg.id})"> <i class="fa fa-pencil"></i> </a>
+                <a class="remove" ng-click="deleteRegister('md',reg.id)"> <i class="fa fa-trash-o "></i> </a>
               </div>
             </div>
           </div>

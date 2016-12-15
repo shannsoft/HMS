@@ -316,7 +316,7 @@ header('Access-Control-Allow-Origin: *');
 				case 'create':
 					if(isset($this->_request['register_data'])){
 						$reg_data = $this->_request['register_data'];
-						$reg_type = $reg_data['reg_type'];
+						$reg_type = $reg_data['registration_type'];
 						$reg_fname = $reg_data['first_name'];
 						$reg_lname = $reg_data['last_name'];
 						$reg_gen = $reg_data['gender'];
@@ -325,21 +325,21 @@ header('Access-Control-Allow-Origin: *');
 						$reg_street = $reg_data['street'];
 						$reg_city = $reg_data['city'];
 						$reg_state = $reg_data['state'];
-						$reg_zip = $reg_data['zip_code'];
+						$reg_zip = $reg_data['zip'];
 						$reg_dob = $reg_data['dob'];
 						$reg_age = $reg_data['age'];
 						$reg_marital = $reg_data['marital_status'];
 						$reg_religion = $reg_data['religion'];
 						$reg_regDate = $reg_data['reg_date'];
-						$reg_proType = (isset($reg_data['pro_type'])) ? $reg_data['pro_type'] : null;
+						$reg_proType = (isset($reg_data['prof_type'])) ? $reg_data['prof_type'] : null;
 						$reg_school = (isset($reg_data['school'])) ? $reg_data['school'] : null;
 						$reg_employer = (isset($reg_data['employer'])) ? $reg_data['employer'] : null;
 						$reg_busi_type = (isset($reg_data['business_type'])) ? $reg_data['business_type'] : null;
-						$reg_others = (isset($reg_data['others'])) ? $reg_data['others'] : null;
+						$reg_others = (isset($reg_data['other'])) ? $reg_data['other'] : null;
 						$reg_guardian_type = (isset($reg_data['guardian_type'])) ? $reg_data['guardian_type'] : null;
 						$reg_guardian_name = (isset($reg_data['guardian_name'])) ? $reg_data['guardian_name'] : null;
 						$reg_guardian_mobile = (isset($reg_data['guardian_mobile'])) ? $reg_data['guardian_mobile'] : null;
-						$reg_guardian_address = (isset($reg_data['guardian_address'])) ? $reg_data['guardian_address'] : null;
+						$reg_guardian_address = (isset($reg_data['address'])) ? $reg_data['address'] : null;
 						$reg_dep_id = (isset($reg_data['dep_id'])) ? $reg_data['dep_id'] : null;
 						$reg_doct_id = (isset($reg_data['doct_id'])) ? $reg_data['doct_id'] : null;
 						$reg_hear_about_us = (isset($reg_data['hear_about_us'])) ? $reg_data['hear_about_us'] : null;
@@ -365,9 +365,10 @@ header('Access-Control-Allow-Origin: *');
 					break;
 				case 'get':
 						$reg_data = isset($this->_request['register_data']) ? $this->_request['register_data'] : $this->_request;
-						$sql = "SELECT * FROM ".self::registerTable." where is_deleted = 0";
+						$sql = "SELECT * FROM ".self::registerTable." a
+						where a.is_deleted = 0";
 						if(isset($reg_data['id']))
-							$sql .= " AND reg_id=".$reg_data['id'];
+							$sql .= " AND a.reg_id=".$reg_data['id'];
 						$rows = $this->executeGenericDQLQuery($sql);
 						$register = array();
 						for($i = 0; $i < sizeof($rows); $i++) {

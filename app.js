@@ -17,7 +17,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
         url: '/login',
         controller:"Main_Controller",
         onEnter: function($localStorage, $state) {
-           if (!$localStorage.user) {
+           if ($localStorage.user) {
                $state.go('dashboard');
            }
          }
@@ -55,6 +55,16 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
     .state('detailsView', {
         templateUrl: 'views/registration/patient_view.html',
         url: '/detailsView/:reg_id',
+        controller:"Registration_Controller",
+        onEnter: function($localStorage, $state) {
+           if (!$localStorage.user) {
+               $state.go('login');
+           }
+         }
+    })
+    .state('cardPrint', {
+        templateUrl: 'views/registration/card_print.html',
+        url: '/cardPrint/:reg_id',
         controller:"Registration_Controller",
         onEnter: function($localStorage, $state) {
            if (!$localStorage.user) {

@@ -18,6 +18,7 @@
 .m-l-40{ margin-left:40px;}
 .m-l-50{ margin-left:50px;}
 .w-100{ width:100px;}
+.w-full{ width:100%;}
 .m-h-5{
 	margin-left:5px;
 	margin-right:5px;
@@ -181,4 +182,17 @@
 
 .text-right{
 	text-align:right;
+}
+
+.item-col a.check{
+	color: #40B726;
+	margin-right: 5px;
+}
+.item-col a.edit{
+	color: #38424C;
+	margin-right: 5px;
+}
+.item-col a.remove{
+	  color: #DB0E1E;
+		margin-right: 5px;
 }

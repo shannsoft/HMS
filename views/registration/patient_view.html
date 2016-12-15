@@ -1,4 +1,4 @@
-<article class="content item-editor-page">
+<article class="content item-editor-page" ng-init="loadDetails()">
   <div class="title-block">
     <h3 class="title">
       Details view
@@ -15,14 +15,77 @@
           </div>
         </div>
         <div class="card card-block">
-          <div class="row">
+          <div class="row" ng-if="registerDetails.reason">
             <div class="col-sm-12">
               <div class="form-group">
-                <label for="email">About</label>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed eros mi. Morbi in diam pharetra, vulputate nisi sed, mattis ipsum. Aliquam placerat turpis ac mauris pharetra, quis ultricies urna porttitor. Vivamus ac ligula gravida, bibendum arcu id, rutrum metus. In lobortis, eros vitae congue volutpat</p>
+                <label for="email">Reason</label>
+                <p>{{registerDetails.reason}}</p>
               </div>
             </div>
           </div>
+          <div class="row m-t-20">
+            <div class="col-md-12">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th scope="row">Registration No.</th>
+                    <td>{{registerDetails.reg_no}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Name</th>
+                    <td>{{registerDetails.first_name+" "+registerDetails.last_name}}</td>
+                  </tr>
+                  <tr ng-if="registerDetails.email">
+                    <th scope="row">Email</th>
+                    <td>{{registerDetails.email}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mobile</th>
+                    <td>{{registerDetails.mobile}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Address</th>
+                    <td>{{registerDetails.street}}, {{registerDetails.city}}, {{registerDetails.state}}, {{registerDetails.zip}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Gender</th>
+                    <td>{{registerDetails.gender}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Date of Birth</th>
+                    <td>{{registerDetails.dob}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Age</th>
+                    <td>{{registerDetails.age}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Age</th>
+                    <td>{{registerDetails.religion}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Marital Status</th>
+                    <td>{{registerDetails.marital_status}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Registration Date</th>
+                    <td>{{registerDetails.reg_date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 m-b-20">
+      <div class="card card-info">
+        <div class="card-header">
+          <div class="header-block">
+            <p class="title"> Professional Information</p>
+          </div>
+        </div>
+        <div class="card card-block">
           <div class="row m-t-20">
             <div class="col-md-12">
               <table class="table table-bordered">
@@ -58,41 +121,25 @@
       <div class="card card-info">
         <div class="card-header">
           <div class="header-block">
-            <p class="title"> Personal Information</p>
+            <p class="title">Guardian Information</p>
           </div>
         </div>
         <div class="card card-block">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="email">About</label>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed eros mi. Morbi in diam pharetra, vulputate nisi sed, mattis ipsum. Aliquam placerat turpis ac mauris pharetra, quis ultricies urna porttitor. Vivamus ac ligula gravida, bibendum arcu id, rutrum metus. In lobortis, eros vitae congue volutpat</p>
-              </div>
-            </div>
-          </div>
           <div class="row m-t-20">
             <div class="col-md-12">
               <table class="table table-bordered">
                 <tbody>
                   <tr>
-                    <th scope="row">Employee ID</th>
-                    <td>02</td>
+                    <th scope="row">{{registerDetails.guardian_type}}</th>
+                    <td>{{registerDetails.guardian_name}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">FIrst Name</th>
-                    <td>Jacob</td>
+                    <th scope="row">Mobile</th>
+                    <td>{{registerDetails.guardian_mobile}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">Last Name</th>
-                    <td>Larry</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Email</th>
-                    <td>jlarry@gmail.com</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Gender</th>
-                    <td>Male</td>
+                    <th scope="row">Address</th>
+                    <td>{{registerDetails.address}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -101,45 +148,31 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-md-6 m-b-20">
       <div class="card card-info">
         <div class="card-header">
           <div class="header-block">
-            <p class="title"> Personal Information</p>
+            <p class="title">Department</p>
           </div>
         </div>
         <div class="card card-block">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="email">About</label>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed eros mi. Morbi in diam pharetra, vulputate nisi sed, mattis ipsum. Aliquam placerat turpis ac mauris pharetra, quis ultricies urna porttitor. Vivamus ac ligula gravida, bibendum arcu id, rutrum metus. In lobortis, eros vitae congue volutpat</p>
-              </div>
-            </div>
-          </div>
           <div class="row m-t-20">
             <div class="col-md-12">
               <table class="table table-bordered">
                 <tbody>
                   <tr>
-                    <th scope="row">Employee ID</th>
-                    <td>02</td>
+                    <th scope="row">Department</th>
+                    <td>{{registerDetails.guardian_name}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">FIrst Name</th>
-                    <td>Jacob</td>
+                    <th scope="row">Doctor</th>
+                    <td>{{registerDetails.guardian_mobile}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">Last Name</th>
-                    <td>Larry</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Email</th>
-                    <td>jlarry@gmail.com</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Gender</th>
-                    <td>Male</td>
+                    <th scope="row">Price</th>
+                    <td>{{registerDetails.address}}</td>
                   </tr>
                 </tbody>
               </table>
