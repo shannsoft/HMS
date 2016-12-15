@@ -1,7 +1,7 @@
 <article class="content item-editor-page">
   <div class="title-block">
     <h3 class="title">
-    Update Details
+      Update Details
     </h3>
   </div>
   <div class="panel-group" id="accordion">
@@ -15,43 +15,143 @@
      </div>
      <div id="collapseOne" class="panel-collapse collapse in">
        <div class="panel-body">
-         <form name="item">
-           <div class="card card-block m-b-0">
-             <div class="form-group row">
+         <form name="patient_registration">
+           <div class="card card-block m-b-10">
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.first_name.$invalid && patient_registration.first_name.$touched)}">
                <label class="col-sm-2 form-control-label text-xs-right">
-                 Name:
+                 First Name:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
+                 <input type="text" class="form-control boxed" name="first_name" placeholder="First Name" required ng-pattern="/^(\D)+$/">
+                 <span class="help-block" ng-show="patient_registration.first_name.$error.required && patient_registration.first_name.$touched">Please enter first name</span>
+                 <span class="help-block" ng-show="patient_registration.first_name.$error.pattern && patient_registration.first_name.$touched">first name should not be numeric</span>
+               </div>
+             </div>
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.last_name.$invalid && patient_registration.last_name.$touched)}">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Last Name:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" name="last_name" placeholder="Last Name" required ng-pattern="/^(\D)+$/">
+                 <span class="help-block" ng-show="patient_registration.last_name.$error.required && patient_registration.last_name.$touched">Please enter last name</span>
+                 <span class="help-block" ng-show="patient_registration.last_name.$error.pattern && patient_registration.last_name.$touched">last name should not be numeric</span>
                </div>
              </div>
              <div class="form-group row">
                <label class="col-sm-2 form-control-label text-xs-right">
-                 Reason:
+                Gender:
                </label>
                <div class="col-sm-10">
-                 <select class="c-select form-control boxed">
-                   <option selected>Select Category</option>
-                   <option value="1">One</option>
-                   <option value="2">Two</option>
-                   <option value="3">Three</option>
-                 </select>
+                 <div>
+                    <label>
+ 			                    <input class="radio" name="inline-radios" type="radio">
+ 			                    <span>Male</span>
+ 			              </label>
+                    <label>
+ 			                    <input class="radio" name="inline-radios" type="radio">
+ 			                    <span>Female</span>
+ 			              </label>
+                  </div>
+               </div>
+             </div>
+             <div class="form-group row"  ng-class="{'has-error': (patient_registration.mobile.$invalid && patient_registration.mobile.$touched)}">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Mobile:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" name="mobile" placeholder="Mobile" required ng-pattern="/^[0-9]{10,10}$/">
+                 <span class="help-block" ng-show="patient_registration.mobile.$error.required && patient_registration.mobile.$touched">Please enter mobile no</span>
+                 <span class="help-block" ng-show="patient_registration.mobile.$error.pattern && patient_registration.mobile.$touched">mobile no should not be a letter</span>
+               </div>
+             </div>
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.email.$invalid && patient_registration.email.$touched)}">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Email:
+               </label>
+               <div class="col-sm-10">
+                 <input type="email" class="form-control boxed" name="email" placeholder="Email" >
+                 <span class="help-block" ng-show="patient_registration.email.$error.required && patient_registration.email.$touched">Please enter mail id</span>
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Street:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Street">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 City:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="City">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                State:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="State">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                Zip:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Zip code">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                Date of Birth:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Date of Birth">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                Age:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" >
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                Marital Status:
+               </label>
+               <div class="col-sm-10">
+                 <div>
+                    <label>
+                          <input class="radio" name="inline-radios" type="radio">
+                          <span>Single</span>
+                    </label>
+                    <label>
+                          <input class="radio" name="inline-radios" type="radio">
+                          <span>Unmarried</span>
+                    </label>
+                    <label>
+                          <input class="radio" name="inline-radios" type="radio">
+                          <span>Married</span>
+                    </label>
+                    <label>
+                          <input class="radio" name="inline-radios" type="radio">
+                          <span>Widow</span>
+                    </label>
+                  </div>
                </div>
              </div>
              <div class="form-group row">
              <label class="col-sm-2 form-control-label text-xs-right">
-               Doctor:
+               Religion:
              </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
-               </div>
-             </div>
-
-             <div class="form-group row">
-               <div class="col-sm-10 col-sm-offset-2">
-                 <button type="submit" class="btn btn-primary">
-                   Submit
-                 </button>
+                 <input type="text" class="form-control boxed" placeholder="Religion">
                </div>
              </div>
            </div>
@@ -63,7 +163,7 @@
      <div class="panel-heading">
        <h4 class="panel-title">
          <a data-toggle="collapse" class="collapsed" data-parent="#accordion" data-target="#collapseTwo">
-         Guirdains Information
+         Professional Information
          </a>
        </h4>
      </div>
@@ -73,39 +173,49 @@
            <div class="card card-block  m-b-0">
              <div class="form-group row">
                <label class="col-sm-2 form-control-label text-xs-right">
-                 Name:
+                 Profession Type:
                </label>
-               <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
-               </div>
-             </div>
-
-             <div class="form-group row">
-             <label class="col-sm-2 form-control-label text-xs-right">
-               Reason:
-             </label>
                <div class="col-sm-10">
                  <select class="c-select form-control boxed">
                    <option selected>Select Category</option>
-                   <option value="1">One</option>
-                   <option value="2">Two</option>
-                   <option value="3">Three</option>
+                   <option value="1">Student</option>
+                   <option value="2">Employee</option>
+                   <option value="3">Farmer</option>
+                   <option value="3">Business</option>
+                   <option value="3">Other</option>
                  </select>
                </div>
              </div>
              <div class="form-group row">
-             <label class="col-sm-2 form-control-label text-xs-right">
-               Doctor:
-             </label>
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 School/College Name:
+               </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
+                 <input type="text" class="form-control boxed">
                </div>
              </div>
              <div class="form-group row">
-               <div class="col-sm-10 col-sm-offset-2">
-                 <button type="submit" class="btn btn-primary">
-                   Submit
-                 </button>
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Employer:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Business Type:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed">
+               </div>
+             </div>
+             <div class="form-group row">
+             <label class="col-sm-2 form-control-label text-xs-right">
+               Other:
+             </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="">
                </div>
              </div>
            </div>
@@ -117,42 +227,232 @@
      <div class="panel-heading">
        <h4 class="panel-title">
          <a data-toggle="collapse" class="collapsed" data-parent="#accordion" data-target="#collapseThree">
-         Department
+         Guardian Information
          </a>
        </h4>
      </div>
      <div id="collapseThree" class="panel-collapse collapse">
        <div class="panel-body">
          <form name="item">
-           <div class="card card-block m-b-0">
+           <div class="card card-block  m-b-0">
+             <div class="form-group row">
+             <label class="col-sm-2 form-control-label text-xs-right">
+               Guardian Type:
+             </label>
+               <div class="col-sm-10">
+                 <select class="c-select form-control boxed">
+                   <option selected>Select Category</option>
+                   <option value="1">Father</option>
+                   <option value="2">Mother</option>
+                   <option value="3">Spouse</option>
+                   <option value="3">Friends</option>
+                 </select>
+               </div>
+             </div>
              <div class="form-group row">
                <label class="col-sm-2 form-control-label text-xs-right">
                  Name:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
+                 <input type="text" class="form-control boxed" placeholder="Name">
                </div>
              </div>
-
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Mobile:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Mobile">
+               </div>
+             </div>
              <div class="form-group row">
              <label class="col-sm-2 form-control-label text-xs-right">
-               Reason:
+               Address:
+             </label>
+               <div class="col-sm-10">
+                 <div class="form-group">
+                     <textarea class="form-control" rows="5"  placeholder="Address"></textarea>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       <h4 class="panel-title">
+         <a data-toggle="collapse" class="collapsed" data-parent="#accordion" data-target="#collapseFour">
+         Department
+         </a>
+       </h4>
+     </div>
+     <div id="collapseFour" class="panel-collapse collapse">
+       <div class="panel-body">
+         <form name="item">
+           <div class="card card-block m-b-0">
+             <div class="form-group row">
+             <label class="col-sm-2 form-control-label text-xs-right">
+               Department Type:
              </label>
                <div class="col-sm-10">
                  <select class="c-select form-control boxed">
                    <option selected>Select Category</option>
-                   <option value="1">One</option>
-                   <option value="2">Two</option>
-                   <option value="3">Three</option>
+                   <option value="1">Admitting</option>
+                   <option value="2">Adolescent Gynecology</option>
+                   <option value="3">Adolescent Medicine</option>
+                   <option value="4">Anesthesiology</option>
+                   <option value="5">Audiology</option>
+                   <option value="6">Autoimmune Kidney Disease Clinic</option>
+                   <option value="7">Biochemical Genetics</option>
+                   <option value="8">Blood Disorders</option>
+                   <option value="9">Brain Tumor Program</option>
+                   <option value="10">Child Life</option>
+                   <option value="11">Cancer Care Unit</option>
+                   <option value="12">Dentistry</option>
+                   <option value="13">ENT (Otolaryngology)</option>
+                   <option value="14">Family Advisory Council</option>
+                   <option value="15">General Surgery</option>
+                   <option value="16">Gynecology</option>
                  </select>
                </div>
              </div>
              <div class="form-group row">
              <label class="col-sm-2 form-control-label text-xs-right">
-               Doctor:
+               Doctor List:
+             </label>
+               <div class="col-sm-10">
+                 <select class="c-select form-control boxed">
+                   <option selected>Select Category</option>
+                   <option value="1">Admitting</option>
+                   <option value="2">Adolescent Gynecology</option>
+                   <option value="3">Adolescent Medicine</option>
+                   <option value="4">Anesthesiology</option>
+                 </select>
+               </div>
+             </div>
+             <div class="form-group row">
+             <label class="col-sm-2 form-control-label text-xs-right">
+               Doctor Location:
              </label>
                <div class="col-sm-10">
                  <input type="text" class="form-control boxed" placeholder="">
+               </div>
+             </div>
+             <div class="form-group row">
+             <label class="col-sm-2 form-control-label text-xs-right">
+               Consulting Price:
+             </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="">
+               </div>
+             </div>
+             <div class="form-group row">
+             <label class="col-sm-2 form-control-label text-xs-right">
+               Day and Timing Information:
+             </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="">
+               </div>
+             </div>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       <h4 class="panel-title">
+         <a data-toggle="collapse" class="collapsed" data-parent="#accordion" data-target="#collapseFive">
+          Previous Madical History
+         </a>
+       </h4>
+     </div>
+     <div id="collapseFive" class="panel-collapse collapse">
+       <div class="panel-body">
+         <form name="item">
+           <div class="card card-block  m-b-0">
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Deasease:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Deasease">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Name Of The Hospital:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Name Of The Hospital">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Name Of The Doctor:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Name Of The Doctor">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Date Of Consulation:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder=" Date Of Consulation">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Wheather Addmited To Hospital:
+               </label>
+               <div class="col-sm-10">
+                 <div>
+                    <label>
+                          <input class="radio" name="inline-radios" type="radio">
+                          <span>yes</span>
+                    </label>
+                    <label>
+                          <input class="radio" name="inline-radios" type="radio">
+                          <span>no</span>
+                    </label>
+                  </div>
+               </div>
+             </div>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       <h4 class="panel-title">
+         <a data-toggle="collapse" class="collapsed" data-parent="#accordion" data-target="#collapseSix">
+         Other
+         </a>
+       </h4>
+     </div>
+     <div id="collapseSix" class="panel-collapse collapse">
+       <div class="panel-body">
+         <form name="item">
+           <div class="card card-block  m-b-0">
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 How Did You Here About Us:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder=" How Did You Here About Us">
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                 Reason For Visit:
+               </label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control boxed" placeholder="Reason For Visit">
                </div>
              </div>
              <div class="form-group row">

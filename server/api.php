@@ -300,6 +300,43 @@ header('Access-Control-Allow-Origin: *');
 			}
 			$this->sendResponse(200,$this->messages['dataFetched'],$doctor);
 		}
+		/*******************************************************/
+		/******This function use for register a patient*********/
+		/*******************************************************/
+		public function register(){
+			if(isset($this->_request['register_data'])){
+				$reg_data = $this->_request['register_data'];
+				$reg_type = $reg_data['reg_type'];
+				$reg_fname = $reg_data['first_name'];
+				$reg_lname = $reg_data['last_name'];
+				$reg_gen = $reg_data['gender'];
+				$reg_mobile = $reg_data['mobile'];
+				$reg_email = (isset($reg_data['email'])) ? $reg_data['email'] : null;
+				$reg_street = $reg_data['street'];
+				$reg_city = $reg_data['city'];
+				$reg_state = $reg_data['state'];
+				$reg_zip = $reg_data['zip_code'];
+				$reg_dob = $reg_data['dob'];
+				$reg_age = $reg_data['age'];
+				$reg_marital = $reg_data['marital_status'];
+				$reg_religion = $reg_data['religion'];
+				$reg_regDate = $reg_data['reg_date'];
+				$reg_proType = (isset($reg_data['pro_type'])) ? $reg_data['pro_type'] : null;
+				$reg_school = (isset($reg_data['school'])) ? $reg_data['school'] : null;
+				$reg_employer = (isset($reg_data['employer'])) ? $reg_data['employer'] : null;
+				$reg_busi_type = (isset($reg_data['business_type'])) ? $reg_data['business_type'] : null;
+				$reg_others = (isset($reg_data['others'])) ? $reg_data['others'] : null;
+				$reg_guardian_type = (isset($reg_data['guardian_type'])) ? $reg_data['guardian_type'] : null;
+				$reg_guardian_name = (isset($reg_data['guardian_name'])) ? $reg_data['guardian_name'] : null;
+				$reg_guardian_mobile = (isset($reg_data['guardian_mobile'])) ? $reg_data['guardian_mobile'] : null;
+				$reg_guardian_address = (isset($reg_data['guardian_address'])) ? $reg_data['guardian_address'] : null;
+				$reg_dep_id = (isset($reg_data['dep_id'])) ? $reg_data['dep_id'] : null;
+				$reg_doct_id = (isset($reg_data['doct_id'])) ? $reg_data['doct_id'] : null;
+				$reg_hear_about_us = (isset($reg_data['hear_about_us'])) ? $reg_data['hear_about_us'] : null;
+				$reg_reason = (isset($reg_data['reason'])) ? $reg_data['reason'] : null;
+				$reg_is_deleted = 0;
+			}
+		}
 	}
 	$api = new API;
 	$api->processApi();
