@@ -33,5 +33,15 @@ mainApp.factory('RegisterService',function($http,CONFIG,$localStorage){
         });
         return response;
       },
+      department: function(){
+        var response = $http.get(CONFIG.HTTP_HOST+"?reqmethod=getDepartment",{
+           headers: {}
+         });
+        return response;
+      },
+      doctor: function(dep_id){
+        var response = $http.get(CONFIG.HTTP_HOST+"?reqmethod=getDoctor&dep_id="+dep_id);
+        return response;
+      }
     }
 });

@@ -18,6 +18,27 @@
        <div class="panel-body">
          <form name="patient_registration">
            <div class="card card-block m-b-10">
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                Registration Type:
+               </label>
+               <div class="col-sm-10">
+                 <div>
+                    <label>
+                           <input class="radio" name="inline-radios" type="radio">
+                           <span>OPD</span>
+                     </label>
+                     <label>
+                            <input class="radio" name="inline-radios" type="radio">
+                            <span>Casual</span>
+                      </label>
+                    <label>
+                           <input class="radio" name="inline-radios" type="radio">
+                           <span>Normal</span>
+                     </label>
+                  </div>
+               </div>
+             </div>
              <div class="form-group row" ng-class="{'has-error': (patient_registration.first_name.$invalid && patient_registration.first_name.$touched)}">
                <label class="col-sm-2 form-control-label text-xs-right">
                  First Name:
@@ -74,36 +95,44 @@
                  <span class="help-block" ng-show="patient_registration.email.$error.required && patient_registration.email.$touched">Please enter mail id</span>
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.street.$invalid && patient_registration.street.$touched)}">
                <label class="col-sm-2 form-control-label text-xs-right">
                  Street:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="Street">
+                 <input type="text" class="form-control boxed" placeholder="Street" name="street" required ng-pattern="/^(\D)+$/">
+                 <span class="help-block" ng-show="patient_registration.street.$error.required && patient_registration.street.$touched">Please enter Street name</span>
+                 <span class="help-block" ng-show="patient_registration.street.$error.pattern && patient_registration.street.$touched">please enter Street name</span>
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.city.$invalid && patient_registration.city.$touched)}">
                <label class="col-sm-2 form-control-label text-xs-right">
                  City:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="City">
+                 <input type="text" class="form-control boxed" placeholder="City" name="city" required ng-pattern="/^(\D)+$/">
+                 <span class="help-block" ng-show="patient_registration.city.$error.required && patient_registration.city.$touched">Please enter city name</span>
+                 <span class="help-block" ng-show="patient_registration.city.$error.pattern && patient_registration.city.$touched">please enter city name</span>
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.state.$invalid && patient_registration.state.$touched)}">
                <label class="col-sm-2 form-control-label text-xs-right">
                 State:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="State">
+                 <input type="text" class="form-control boxed" placeholder="State" name="state" required ng-pattern="/^(\D)+$/">
+                 <span class="help-block" ng-show="patient_registration.state.$error.required && patient_registration.state.$touched">Please enter state name</span>
+                 <span class="help-block" ng-show="patient_registration.state.$error.pattern && patient_registration.state.$touched">please enter state name</span>
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.zipcode.$invalid && patient_registration.zipcode.$touched)}">
                <label class="col-sm-2 form-control-label text-xs-right">
                 Zip:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="Zip code">
+                 <input type="text" class="form-control boxed" name="zipcode" placeholder="Zip code" ng-maxlength="6" required ng-pattern="/^[0-9]/">
+                 <span class="help-block" ng-show="patient_registration.zipcode.$error.required && patient_registration.zipcode.$touched">Please enter zipcode</span>
+                 <span class="help-block" ng-show="patient_registration.zipcode.$error.pattern && patient_registration.zipcode.$touched">please enter zipcode</span>
                </div>
              </div>
              <div class="form-group row">
@@ -111,15 +140,20 @@
                 Date of Birth:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="Date of Birth">
+                 <p class="input-group">
+                   <input type="text" class="form-control" placeholder="Date Of Birth" ng-change="calculateage(dateString)" uib-datepicker-popup ng-model="patient.patient_dob" is-open="popup2.opened" datepicker-options="dateOptions"  close-text="Close" />
+                   <span class="input-group-btn">
+                     <button type="button" class="btn btn-default" ng-click="open()"><i class="fa fa-calendar"></i></button>
+                   </span>
+                 </p>
                </div>
              </div>
-             <div class="form-group row">
+              <div class="form-group row">
                <label class="col-sm-2 form-control-label text-xs-right">
                 Age:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" >
+                 <input type="text" class="form-control boxed" ng-model="patient.patient_age">
                </div>
              </div>
              <div class="form-group row">
@@ -128,10 +162,6 @@
                </label>
                <div class="col-sm-10">
                  <div>
-                    <label>
-                          <input class="radio" name="inline-radios" type="radio">
-                          <span>Single</span>
-                    </label>
                     <label>
                           <input class="radio" name="inline-radios" type="radio">
                           <span>Unmarried</span>
@@ -147,12 +177,22 @@
                   </div>
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-class="{'has-error': (patient_registration.religion.$invalid && patient_registration.religion.$touched)}">
              <label class="col-sm-2 form-control-label text-xs-right">
                Religion:
              </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="Religion">
+                 <input type="text" class="form-control boxed" placeholder="Religion" name="religion" required ng-pattern="/^(\D)+$/">
+                 <span class="help-block" ng-show="patient_registration.religion.$error.required && patient_registration.religion.$touched">Please enter religion</span>
+                 <span class="help-block" ng-show="patient_registration.religion.$error.pattern && patient_registration.religion.$touched">please enter religion</span>
+               </div>
+             </div>
+             <div class="form-group row">
+               <label class="col-sm-2 form-control-label text-xs-right">
+                Date of Registration:
+               </label>
+               <div class="col-sm-10">
+                  <input type="text"  class="form-control boxed"  name="religion" ng-model="patient_dor" readonly>
                </div>
              </div>
            </div>
@@ -177,46 +217,46 @@
                  Profession Type:
                </label>
                <div class="col-sm-10">
-                 <select class="c-select form-control boxed">
+                 <select class="c-select form-control boxed" ng-model="patient.patient_type" required>
                    <option selected>Select Category</option>
-                   <option value="1">Student</option>
-                   <option value="2">Employee</option>
-                   <option value="3">Farmer</option>
-                   <option value="3">Business</option>
-                   <option value="3">Other</option>
+                   <option value="Student">Student</option>
+                   <option value="Employee">Employee</option>
+                   <option value="Farmer">Farmer</option>
+                   <option value="Business">Business</option>
+                   <option value="Other">Other</option>
                  </select>
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row"  ng-if="patient.patient_type== 'Student'">
                <label class="col-sm-2 form-control-label text-xs-right">
                  School/College Name:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed">
+                 <input type="text" class="form-control boxed" ng-if="patient.patient_type== 'Student'"  ng-model="patient.school_name" name="school_name">
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-if="patient.patient_type== 'Employee'" ng-class="{'has-error': (patient_registration.school_name.$invalid && patient_registration.school_name.$touched)}">
                <label class="col-sm-2 form-control-label text-xs-right">
                  Employer:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed">
+                 <input type="text" class="form-control boxed" ng-model="patient.employer" >
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-if="patient.patient_type== 'Business'">
                <label class="col-sm-2 form-control-label text-xs-right">
                  Business Type:
                </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed">
+                 <input type="text" class="form-control boxed" ng-model="patient.business_type"  >
                </div>
              </div>
-             <div class="form-group row">
+             <div class="form-group row" ng-if="patient.patient_type== 'Other'">
              <label class="col-sm-2 form-control-label text-xs-right">
                Other:
              </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
+                 <input type="text" class="form-control boxed" placeholder="" ng-model="patient.other" >
                </div>
              </div>
            </div>
@@ -298,24 +338,9 @@
                Department Type:
              </label>
                <div class="col-sm-10">
-                 <select class="c-select form-control boxed">
-                   <option selected>Select Category</option>
-                   <option value="1">Admitting</option>
-                   <option value="2">Adolescent Gynecology</option>
-                   <option value="3">Adolescent Medicine</option>
-                   <option value="4">Anesthesiology</option>
-                   <option value="5">Audiology</option>
-                   <option value="6">Autoimmune Kidney Disease Clinic</option>
-                   <option value="7">Biochemical Genetics</option>
-                   <option value="8">Blood Disorders</option>
-                   <option value="9">Brain Tumor Program</option>
-                   <option value="10">Child Life</option>
-                   <option value="11">Cancer Care Unit</option>
-                   <option value="12">Dentistry</option>
-                   <option value="13">ENT (Otolaryngology)</option>
-                   <option value="14">Family Advisory Council</option>
-                   <option value="15">General Surgery</option>
-                   <option value="16">Gynecology</option>
+                 <select class="c-select form-control boxed" ng-model="patient.department" name="department" ng-init="loadDepartment()" ng-change="loadDoctorlist()">
+                   <option value="">Select Category</option>
+                   <option value="{{department.id}}" ng-repeat="department in departmentlist">{{department.name}}</option>
                  </select>
                </div>
              </div>
@@ -324,12 +349,9 @@
                Doctor List:
              </label>
                <div class="col-sm-10">
-                 <select class="c-select form-control boxed">
-                   <option selected>Select Category</option>
-                   <option value="1">Admitting</option>
-                   <option value="2">Adolescent Gynecology</option>
-                   <option value="3">Adolescent Medicine</option>
-                   <option value="4">Anesthesiology</option>
+                 <select class="c-select form-control boxed" ng-model="patient.doctordetail" ng-change="loadDoctordetails(patient.doctordetail)">
+                   <option value="">Select Category</option>
+                   <option value="{{doctor}}" ng-repeat="doctor in doctorlist">{{doctor.doct_name}}</option>
                  </select>
                </div>
              </div>
@@ -338,7 +360,7 @@
                Doctor Location:
              </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
+                 <input type="text" class="form-control boxed" placeholder="" ng-model="doctorDetails.doct_location" readonly>
                </div>
              </div>
              <div class="form-group row">
@@ -346,7 +368,7 @@
                Consulting Price:
              </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
+                 <input type="text" class="form-control boxed"  ng-model="doctorDetails.doct_price" readonly>
                </div>
              </div>
              <div class="form-group row">
@@ -354,7 +376,7 @@
                Day and Timing Information:
              </label>
                <div class="col-sm-10">
-                 <input type="text" class="form-control boxed" placeholder="">
+                 <input type="text" class="form-control boxed"  ng-model="doctorDetails.doct_timing" readonly>
                </div>
              </div>
            </div>

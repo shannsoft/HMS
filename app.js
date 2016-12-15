@@ -1,4 +1,4 @@
-var mainApp = angular.module('hms-app',['ui.router','ui.bootstrap', 'ngResource', 'ngStorage', 'ngAnimate','ngCookies']);
+var mainApp = angular.module('hms-app',['ui.router','ui.bootstrap', 'ngResource', 'ngStorage', 'ngAnimate','ngCookies','datePicker']);
 mainApp.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/login');
   $stateProvider
@@ -17,7 +17,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
         url: '/login',
         controller:"Main_Controller",
         onEnter: function($localStorage, $state) {
-           if ($localStorage.user) {
+           if (!$localStorage.user) {
                $state.go('dashboard');
            }
          }
