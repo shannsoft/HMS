@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 m-b-20">
+    <div class="col-md-6 m-b-20" ng-if="registerDetails.prof_type">
       <div class="card card-info">
         <div class="card-header">
           <div class="header-block">
@@ -91,24 +91,24 @@
               <table class="table table-bordered">
                 <tbody>
                   <tr>
-                    <th scope="row">Employee ID</th>
-                    <td>02</td>
+                    <th scope="row">Profession :</th>
+                    <td>{{registerDetails.prof_type}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">FIrst Name</th>
-                    <td>Jacob</td>
+                  <tr ng-if="registerDetails.prof_type == 'Student'">
+                    <th scope="row">School/College :</th>
+                    <td>{{registerDetails.school}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">Last Name</th>
-                    <td>Larry</td>
+                  <tr ng-if="registerDetails.prof_type == 'Employee'">
+                    <th scope="row">Employee at :</th>
+                    <td>{{registerDetails.employer}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">Email</th>
-                    <td>jlarry@gmail.com</td>
+                  <tr ng-if="registerDetails.prof_type == 'Business'">
+                    <th scope="row">Business</th>
+                    <td>{{registerDetails.business_type}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">Gender</th>
-                    <td>Male</td>
+                  <tr ng-if="registerDetails.prof_type == 'Other'">
+                    <th scope="row">Other</th>
+                    <td>{{registerDetails.other}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -117,7 +117,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 m-b-20">
+    <div class="col-md-6 m-b-20" ng-if="registerDetails.guardian_type">
       <div class="card card-info">
         <div class="card-header">
           <div class="header-block">
@@ -150,7 +150,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 m-b-20">
+    <div class="col-md-6 m-b-20" ng-if="registerDetails.department">
       <div class="card card-info">
         <div class="card-header">
           <div class="header-block">
@@ -164,15 +164,15 @@
                 <tbody>
                   <tr>
                     <th scope="row">Department</th>
-                    <td>{{registerDetails.guardian_name}}</td>
+                    <td>{{registerDetails.department}}</td>
                   </tr>
                   <tr>
                     <th scope="row">Doctor</th>
-                    <td>{{registerDetails.guardian_mobile}}</td>
+                    <td>{{registerDetails.doctor}}</td>
                   </tr>
                   <tr>
                     <th scope="row">Price</th>
-                    <td>{{registerDetails.address}}</td>
+                    <td>{{registerDetails.doct_price}}</td>
                   </tr>
                 </tbody>
               </table>

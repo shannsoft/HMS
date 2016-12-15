@@ -365,7 +365,13 @@ header('Access-Control-Allow-Origin: *');
 					break;
 				case 'get':
 						$reg_data = isset($this->_request['register_data']) ? $this->_request['register_data'] : $this->_request;
-						$sql = "SELECT * FROM ".self::registerTable." a
+						$sql = "SELECT a.reg_id,a.reg_no,a.registration_type,a.first_name,a.last_name,a.gender,a.mobile,a.email,
+						a.street,a.city,a.state,a.zip,a.dob,a.age,a.marital_status,a.religion,
+						a.prof_type,a.school,a.employer,a.business_type,a.other,a.guardian_type,a.guardian_name,a.guardian_mobile,
+						a.address,a.dep_id,a.doct_id,a.hear_about_us,a.reason,a.reg_date,a.is_deleted,b.dep_name,c.doct_name,c.doct_price
+						FROM ".self::registerTable." a
+						INNER JOIN department_table AS b ON a.dep_id = b.dep_id
+						INNER JOIN doctor_table AS c ON a.doct_id = c.doct_id
 						where a.is_deleted = 0";
 						if(isset($reg_data['id']))
 							$sql .= " AND a.reg_id=".$reg_data['id'];
@@ -403,6 +409,9 @@ header('Access-Control-Allow-Origin: *');
 							$register[$i]['reason'] = $rows[$i]['reason'];
 							$register[$i]['reg_date'] = $rows[$i]['reg_date'];
 							$register[$i]['is_deleted'] = $rows[$i]['is_deleted'];
+							$register[$i]['department'] = $rows[$i]['dep_name'];
+							$register[$i]['doctor'] = $rows[$i]['doct_name'];
+							$register[$i]['doct_price'] = $rows[$i]['doct_price'];
 						}
 						$this->sendResponse(200,$this->messages['dataFetched'],$register);
 						break;

@@ -57,6 +57,8 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
     RegisterService.register(obj,"get").then(function(pRes) {
       if(pRes.data.statusCode == 200){
         $scope.registerDetails = pRes.data.data[0];
+        $scope.patient = pRes.data.data[0];
+        $scope.patient.dob = moment($scope.patient.dob).format("MM/DD/YYYY");
       }
     });
   }
@@ -76,27 +78,7 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
     newWin.focus();
   }
   $scope.register = function(){
-    console.log($scope.patient);
     $scope.patient.dob = moment($scope.patient.dob).format("YYYY-MM-DD");
-    // var obj = {
-    //   "registration_type":"OPD",
-    //   "first_name":"Santosh",
-    //   "last_name" : "Majhi",
-    //   "gender":"male",
-    //   "mobile":"9438753143",
-    //   "street":"Test",
-    //   "city":"Test",
-    //   "state":"Test",
-    //   "zip":"123456",
-    //   "dob":"1982-10-10",
-    //   "age":"30",
-    //   "marital_status":"Single",
-    //   "religion":"hindu",
-    //   "reg_date":"2016-12-12",
-    //   "email":"santoshmajhi99@gmail.com",
-    //   "dep_id":"1",
-    //   "doct_id":2
-    // }
     RegisterService.register($scope.patient,'create').then(function(pRes) {
       if(pRes.data.statusCode == 200){
         console.log(pRes.data.data.id);
