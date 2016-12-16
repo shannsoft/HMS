@@ -372,7 +372,7 @@ header('Access-Control-Allow-Origin: *');
 						$sql = "SELECT a.reg_id,a.reg_no,a.registration_type,a.first_name,a.last_name,a.gender,a.mobile,a.email,
 						a.street,a.city,a.state,a.zip,a.dob,a.age,a.marital_status,a.religion,
 						a.prof_type,a.school,a.employer,a.business_type,a.other,a.guardian_type,a.guardian_name,a.guardian_mobile,
-						a.address,a.dep_id,a.doct_id,a.hear_about_us,a.reason,a.reg_date,a.is_deleted,b.dep_name,c.doct_name,c.doct_price
+						a.address,a.dep_id,a.doct_id,a.hear_about_us,a.reason,a.reg_date,a.is_deleted,b.dep_name,c.doct_name,c.doct_price,c.doct_location
 						FROM ".self::registerTable." a
 						INNER JOIN department_table AS b ON a.dep_id = b.dep_id
 						INNER JOIN doctor_table AS c ON a.doct_id = c.doct_id
@@ -416,6 +416,7 @@ header('Access-Control-Allow-Origin: *');
 							$register[$i]['department'] = $rows[$i]['dep_name'];
 							$register[$i]['doctor'] = $rows[$i]['doct_name'];
 							$register[$i]['doct_price'] = $rows[$i]['doct_price'];
+							$register[$i]['doct_location'] = $rows[$i]['doct_location'];
 						}
 						$this->sendResponse(200,$this->messages['dataFetched'],$register);
 						break;
