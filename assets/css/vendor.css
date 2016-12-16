@@ -9020,9 +9020,9 @@ input[type="checkbox"].disabled {
 .btn {
   display: inline-block;
   padding: .375rem 1rem;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1.4285743;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -9937,7 +9937,7 @@ input[type="button"].btn-block {
 
 .input-group .form-control {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   float: left;
   width: 100%;
   margin-bottom: 0;
@@ -9957,6 +9957,11 @@ input[type="button"].btn-block {
 .input-group-btn:not(:first-child):not(:last-child),
 .input-group .form-control:not(:first-child):not(:last-child) {
   border-radius: 0;
+}
+.input-group-btn .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
 }
 
 .input-group-addon,

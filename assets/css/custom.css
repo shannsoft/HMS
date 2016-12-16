@@ -200,7 +200,7 @@
 	cursor:pointer;
 }
 .alert-message{
-	position: absolute !important;
+	position: fixed !important;
 	right: 3px!important;
 	left: 235px!important;
 	z-index: 99!important;

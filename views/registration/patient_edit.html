@@ -139,11 +139,10 @@
                </label>
                <div class="col-sm-10">
                  <p class="input-group w-full">
-                   <input type="date" class="form-control" ng-model="patient.dob" id="date1" placeholder="" ng-change="calculateAge()">
-                   <!-- <input type="text" class="form-control" placeholder="Date Of Birth" ng-change="calculateage(dateString)" uib-datepicker-popup ng-model="patient.patient_dob" is-open="popup2.opened" datepicker-options="dateOptions"  close-text="Close" />
+                   <input type="text" class="form-control" placeholder="Date Of Birth" ng-change="calculateAge()" uib-datepicker-popup ng-model="patient.dob" is-open="popup2.opened" datepicker-options="dateOptions"  close-text="Close" />
                    <span class="input-group-btn">
                      <button type="button" class="btn btn-default" ng-click="open()"><i class="fa fa-calendar"></i></button>
-                   </span> -->
+                   </span>
                  </p>
                </div>
              </div>
@@ -484,7 +483,7 @@
    </div>
    <div class="form-group row">
      <div class="col-sm-12 text-right">
-       <button type="submit" class="btn btn-primary" ng-click="Update()">
+       <button type="submit" class="btn btn-primary" ng-click="updateRegister()">
          Update
        </button>
      </div>
