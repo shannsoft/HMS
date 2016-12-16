@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2016 at 11:33 AM
+-- Generation Time: Dec 16, 2016 at 06:19 AM
 -- Server version: 10.0.17-MariaDB
 -- PHP Version: 5.6.14
 
@@ -94,7 +94,7 @@ CREATE TABLE `registration_table` (
   `first_name` text NOT NULL,
   `last_name` text NOT NULL,
   `gender` text NOT NULL,
-  `mobile` int(12) NOT NULL,
+  `mobile` text NOT NULL,
   `email` text NOT NULL,
   `street` text NOT NULL,
   `city` text NOT NULL,
@@ -126,11 +126,20 @@ CREATE TABLE `registration_table` (
 --
 
 INSERT INTO `registration_table` (`reg_id`, `reg_no`, `registration_type`, `first_name`, `last_name`, `gender`, `mobile`, `email`, `street`, `city`, `state`, `zip`, `dob`, `age`, `marital_status`, `religion`, `prof_type`, `school`, `employer`, `business_type`, `other`, `guardian_type`, `guardian_name`, `guardian_mobile`, `address`, `dep_id`, `doct_id`, `hear_about_us`, `reason`, `reg_date`, `is_deleted`) VALUES
-(2, 'HMS/16/2', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, '', '', '', '', 0, '0000-00-00', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 0),
-(3, 'HMS/16/3', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, '', 'Test', 'Test', 'Test', 0, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
-(4, 'HMS/16/4', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, '', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
-(5, 'HMS/16/5', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
-(6, 'HMS/16/6', 'OPD', 'Santosh', 'Majhi', 'male', 2147483647, 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0);
+(2, 'HMS/16/2', 'OPD', 'Santosh', 'Majhi', 'male', '2147483647', '', '', '', '', 0, '0000-00-00', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 1),
+(3, 'HMS/16/3', 'OPD', 'Santosh', 'Majhi', 'male', '2147483647', '', 'Test', 'Test', 'Test', 0, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(4, 'HMS/16/4', 'OPD', 'Santosh', 'Majhi', 'male', '2147483647', '', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(5, 'HMS/16/5', 'OPD', 'Santosh', 'Majhi', 'male', '2147483647', 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(6, 'HMS/16/6', 'OPD', 'Santosh', 'Majhi', 'male', '2147483647', 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(7, 'HMS/16/7', 'OPD', 'Santosh', 'Majhi', 'male', '2147483647', 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(8, 'HMS/16/8', 'OPD', 'Santosh', 'Majhi', 'male', '2147483647', 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', '2016-12-12', 0),
+(9, 'HMS/16/9', 'OPD', 'Santosh', 'Majhi', 'Male', '2147483647', 'santoshmajhi99@gmail.com', 'Saheed nagar', 'Bhubaneswar', 'Odisha', 751001, '0000-00-00', 24, 'Unmarried', 'Hindu', 'Employee', '', 'Teknobiz', '', '', 'Father', 'Chandra Sekhar Majhi', 2147483647, 'jkajkdfjklasdf  asdjkljdklsjfklajsf  ,ajfklajdf', 1, 2, 'Friends', '', '2016-12-15', 0),
+(10, 'HMS/16/10', '', 'Santosh', 'Majhi', 'male', '9438753143', 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 0, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 1, 2, '', '', '2016-12-12', 1),
+(11, 'HMS/16/11', 'OPD', 'Santosh', 'Majhi', 'male', '9438753143', 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 0, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 1, 2, '', '', '2016-12-12', 0),
+(12, 'HMS/16/12', 'OPD', 'Santosh', 'Majhi', 'male', '9438753143', 'santoshmajhi99@gmail.com', 'Test', 'Test', 'Test', 123456, '1982-10-10', 30, 'Single', 'hindu', '', '', '', '', '', '', '', 0, '', 1, 2, '', '', '2016-12-12', 0),
+(13, 'HMS/16/13', 'Normal', 'dsafasdf', 'asdfasdf', 'Male', '1234567890', '', 'asdfasdf', 'adsfadsf', 'adsfasd', 0, '2014-02-12', 2, 'Married', 'fasdfasdf', '', '', '', '', '', '', '', 0, '', 1, 1, '', '', '2016-12-15', 0),
+(14, 'HMS/16/14', 'Normal', 'dsafasdf', 'asdfasdf', 'Male', '1234567890', '', 'asdfasdf', 'adsfadsf', 'adsfasd', 123456, '2014-02-12', 2, 'Married', 'fasdfasdf', '', '', '', '', '', '', '', 0, '', 1, 1, '', '', '2016-12-15', 0),
+(15, 'HMS/16/15', 'OPD', 'Rajashree', 'Biswal', 'Female', '9078640778', 'biswal.rajasree86@gmail.com', 'Acharya Vihar', 'Bhubaneswar', 'Odisha', 751001, '1992-02-05', 24, 'Unmarried', 'Hindu', 'Employee', '', 'Teknobiz Solutions', '', '', 'Father', 'Test Father', 1234567890, 'adfasdf as asdf asdfasdf', 1, 1, 'Friends', 'asdfasf', '2016-12-15', 0);
 
 -- --------------------------------------------------------
 
@@ -153,7 +162,7 @@ CREATE TABLE `user_table` (
 --
 
 INSERT INTO `user_table` (`id`, `first_name`, `last_name`, `user_name`, `password`, `roll_type`, `token`) VALUES
-(1, 'Santosh ', 'Majhi', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'aw8M5YvsRchuqLaeiLmxoOCJdZ7EJTCFoBjCaJVPynGau7iXs2Z3qLtNQmY1');
+(1, 'Santosh ', 'Majhi', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'user', 'bGv9wPr7QVmkuplYkgZNGYoZpu9jQhlXPkzDH5WAkx1w18VEFRfIza4UA20X');
 
 --
 -- Indexes for dumped tables
@@ -212,7 +221,7 @@ ALTER TABLE `patient_previous_history`
 -- AUTO_INCREMENT for table `registration_table`
 --
 ALTER TABLE `registration_table`
-  MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `reg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `user_table`
 --
