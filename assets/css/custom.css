@@ -196,3 +196,13 @@
 	  color: #DB0E1E;
 		margin-right: 5px;
 }
+.lang-item{
+	cursor:pointer;
+}
+.alert-message{
+	position: absolute !important;
+	right: 3px!important;
+	left: 235px!important;
+	z-index: 99!important;
+	top: 73px!important;
+}
