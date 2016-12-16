@@ -103,6 +103,7 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
   /***************************************************************************/
   $scope.register = function(){
     $scope.patient.dob = moment($scope.patient.dob).format("YYYY-MM-DD");
+    console.log($scope.patient);
     RegisterService.register($scope.patient,'create').then(function(pRes) {
       if(pRes.data.statusCode == 200){
         Util.alertMessage('success', pRes.data.message);
