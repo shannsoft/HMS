@@ -90,6 +90,7 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
     $scope.patient.dob = moment($scope.patient.dob).format("YYYY-MM-DD");
     RegisterService.register($scope.patient,'create').then(function(pRes) {
       if(pRes.data.statusCode == 200){
+        Util.alertMessage('success', pRes.data.message);
         $state.go('cardPrint',{reg_id: pRes.data.data.id})
       }
     });

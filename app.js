@@ -85,7 +85,6 @@ mainApp.factory('Util', ['$rootScope',  '$timeout' , function( $rootScope, $time
     var Util = {};
     $rootScope.alerts =[];
     Util.alertMessage = function(msgType, message){
-        console.log(1212121);
         var alert = { type:msgType , msg: message };
         $rootScope.alerts.push( alert );
          $timeout(function(){
