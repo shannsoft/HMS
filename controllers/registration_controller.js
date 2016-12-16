@@ -69,6 +69,21 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
     });
   }
   /***************************************************************************/
+  /******************This is use to load patient edit**********************/
+  /***************************************************************************/
+  $scope.loadEditDetails = function(){
+    var obj = {
+      "id":$stateParams.reg_id
+    }
+    RegisterService.register(obj,"get").then(function(pRes) {
+      if(pRes.data.statusCode == 200){
+        $scope.patient = pRes.data.data[0];
+        if($scope.patient.dep_id)
+          $scope.loadDoctorlist(true);
+      }
+    });
+  }
+  /***************************************************************************/
   /******************This is use to load patient details**********************/
   /***************************************************************************/
   $scope.printCoverPage  = function(div){
@@ -168,10 +183,13 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
  /***************************************************************************/
  /***********This is use to load all doctorlist*************/
  /***************************************************************************/
- $scope.loadDoctorlist = function(){
+ $scope.loadDoctorlist = function(isEdit){
    RegisterService.doctor($scope.patient.dep_id).then(function(pRes) {
      if(pRes.status == 200){
-       $scope.doctorlist = pRes.data.data;
+        $scope.doctorlist = pRes.data.data;
+        if(isEdit) {
+          $scope.loadDoctordetails($scope.patient.doct_id)
+        }
      }
   })
  }
@@ -179,8 +197,11 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
  /***********This is use to load doctordetails*************/
  /***************************************************************************/
  $scope.loadDoctordetails = function(doctor){
-   $scope.doctorDetails = JSON.parse(doctor);
-   $scope.patient.doct_id = $scope.doctorDetails.doct_id;
+   angular.forEach($scope.doctorlist,function(item){
+     if(doctor == item.doct_id){
+       $scope.doctorDetails = item;
+     }
+   })
  }
 });
 

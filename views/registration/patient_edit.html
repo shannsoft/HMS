@@ -1,4 +1,4 @@
-<article class="content item-editor-page" ng-init="loadDetails()">
+<article class="content item-editor-page" ng-init="loadEditDetails()">
   <div class="title-block">
     <h3 class="title">
       Update Details
@@ -347,9 +347,9 @@
                Doctor List:
              </label>
                <div class="col-sm-10">
-                 <select class="c-select form-control boxed" ng-model="doctor.doctordetails" ng-change="loadDoctordetails(doctor.doctordetails)">
+                 <select class="c-select form-control boxed" ng-model="patient.doct_id" ng-change="loadDoctordetails(patient.doct_id)">
                    <option value="">Select Category</option>
-                   <option value="{{doctor}}" ng-repeat="doctor in doctorlist">{{doctor.doct_name}}</option>
+                   <option value="{{doctor.doct_id}}" ng-repeat="doctor in doctorlist">{{doctor.doct_name}}</option>
                  </select>
                </div>
              </div>
