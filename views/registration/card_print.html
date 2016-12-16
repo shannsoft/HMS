@@ -77,7 +77,7 @@
                     <th scope="row">Guardian Name</th>
                     <td>{{registerDetails.guardian_name}}</td>
                   </tr>
-                  <tr ng-if="registerDetails.guardian_mobile">
+                  <tr ng-if="registerDetails.guardian_mobile && registerDetails.guardian_mobile != 0">
                     <th scope="row">Guardian Mobile no</th>
                     <td>{{registerDetails.guardian_mobile}}</td>
                   </tr>
