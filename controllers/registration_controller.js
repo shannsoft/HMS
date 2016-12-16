@@ -64,9 +64,7 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
     RegisterService.register(obj,"get").then(function(pRes) {
       if(pRes.data.statusCode == 200){
         $scope.registerDetails = pRes.data.data[0];
-        console.log($scope.registerDetails);
         $scope.patient = pRes.data.data[0];
-        $scope.patient.dob = moment($scope.patient.dob).format("MM/DD/YYYY");
       }
     });
   }
