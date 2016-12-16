@@ -141,12 +141,11 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
  /***************************************************************************/
    $scope.calculateAge = function(){
     var dob = moment($scope.patient.dob).format("YYYY-MM-DD");
-    console.log(dob);
     var now = new Date();
     var birthdate = dob.split("-");
     var born = new Date(birthdate[0], birthdate[1]-1, birthdate[2]);
     age = get_age(born,now);
-    if( age > 0)
+    if( age => 0)
       $scope.patient.age = age;
   }
  function get_age(born, now) {
