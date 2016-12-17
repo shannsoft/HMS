@@ -155,22 +155,74 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
  /***************************************************************************/
  /***********************This is use to calculate age************************/
  /***************************************************************************/
-   $scope.calculateAge = function(){
-    var dob = moment($scope.patient.dob).format("YYYY-MM-DD");
-    var now = new Date();
-    var birthdate = dob.split("-");
-    var born = new Date(birthdate[0], birthdate[1]-1, birthdate[2]);
-    age = get_age(born,now);
-    if( age => 0)
-      $scope.patient.age = age;
-  }
- function get_age(born, now) {
-     var birthday = new Date(now.getFullYear(), born.getMonth(), born.getDate());
-     if (now >= birthday)
-       return now.getFullYear() - born.getFullYear();
+   $scope.calculateAge = function(dateString){
+     var dateofbirth = moment(dateString).format('YYYY-MM-DD');
+     var now = new Date();
+     var today = new Date(now.getYear(),now.getMonth(),now.getDate());
+     var yearNow = now.getYear();
+     var monthNow = now.getMonth();
+     var dateNow = now.getDate();
+     var tempDte = dateofbirth.split('-');
+     var dob = new Date(tempDte[0],tempDte[1]-1, tempDte[2]);
+     var yearDob = dob.getYear();
+     var monthDob = dob.getMonth();
+     var dateDob = dob.getDate();
+     var age = {};
+     var ageString = "";
+     var yearString = "";
+     var monthString = "";
+     var dayString = "";
+     yearAge = yearNow - yearDob;
+     if (monthNow >= monthDob)
+       var monthAge = monthNow - monthDob;
+     else {
+       yearAge--;
+       var monthAge = 12 + monthNow -monthDob;
+     }
+
+     if (dateNow >= dateDob)
+       var dateAge = dateNow - dateDob;
+     else {
+       monthAge--;
+       var dateAge = 31 + dateNow - dateDob;
+
+       if (monthAge < 0) {
+         monthAge = 11;
+         yearAge--;
+       }
+     }
+
+     age = {
+         years: yearAge,
+         months: monthAge,
+         days: dateAge
+         };
+
+     if ( age.years > 1 ) yearString = " years";
+     else yearString = " year";
+     if ( age.months> 1 ) monthString = " months";
+     else monthString = " month";
+     if ( age.days > 1 ) dayString = " days";
+     else dayString = " day";
+
+     if ( (age.years > 0) && (age.months > 0) && (age.days > 0) )
+       ageString = age.years + yearString + ", " + age.months + monthString + ", and " + age.days + dayString;
+     else if ( (age.years == 0) && (age.months == 0) && (age.days > 0) )
+       ageString = age.days + dayString;
+     else if ( (age.years > 0) && (age.months == 0) && (age.days == 0) )
+       ageString = age.years + yearString;
+     else if ( (age.years > 0) && (age.months > 0) && (age.days == 0) )
+       ageString = age.years + yearString + " and " + age.months + monthString;
+     else if ( (age.years == 0) && (age.months > 0) && (age.days > 0) )
+       ageString = age.months + monthString + " and " + age.days + dayString;
+     else if ( (age.years > 0) && (age.months == 0) && (age.days > 0) )
+       ageString = age.years + yearString + " and " + age.days + dayString;
+     else if ( (age.years == 0) && (age.months > 0) && (age.days == 0) )
+       ageString = age.months + monthString;
      else
-       return now.getFullYear() - born.getFullYear() - 1;
-}
+      ageString = "Oops! Could not calculate age!";
+      $scope.patient.age = ageString;
+  }
 /***************************************************************************/
 /***********This is use to load all departments in the dropdown*************/
 /***************************************************************************/
