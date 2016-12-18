@@ -1,4 +1,4 @@
-mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,RegisterService,$stateParams,$uibModal,Util){
+mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,RegisterService,$stateParams,$uibModal,Util,NgTableParams){
   $scope.showModal = false;
   $scope.searchString = "All";
   $scope.patient = {};
@@ -7,6 +7,8 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
   /***************************************************************************/
   /************************This is use to show a pop up***********************/
   /***************************************************************************/
+
+
   $scope.deleteRegister = function(size,reg_id){
     var modalInstance = $uibModal.open({
      animation: true,
@@ -51,6 +53,16 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
     RegisterService.register(obj,"get").then(function(pRes) {
       if(pRes.data.statusCode == 200){
         $scope.registerList = pRes.data.data;
+        var initialParams = {
+            count: 15 // initial page size
+        };
+        var initialSettings = {
+          counts: [],
+          paginationMaxBlocks: 13,
+          paginationMinBlocks: 1,
+          dataset:   $scope.registerList
+        };
+        $scope.tableParams = new NgTableParams(initialParams, initialSettings);
       }
     });
   }

@@ -1,4 +1,4 @@
-var mainApp = angular.module('hms-app',['ui.router','ui.bootstrap', 'ngResource', 'ngStorage', 'ngAnimate','ngCookies','datePicker']);
+var mainApp = angular.module('hms-app',['ui.router','ui.bootstrap', 'ngResource', 'ngStorage', 'ngAnimate','ngCookies','datePicker','ngTable']);
 mainApp.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/login');
   $stateProvider

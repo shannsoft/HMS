@@ -316,8 +316,8 @@ header('Access-Control-Allow-Origin: *');
 				if(isset($this->_request['register_data'])){
 					$reg_data = $this->_request['register_data'];
 					$reg_type = $reg_data['registration_type'];
-					$reg_fname = $reg_data['first_name'];
-					$reg_lname = $reg_data['last_name'];
+					$reg_name = $reg_data['name'];
+					// $reg_lname = $reg_data['last_name'];
 					$reg_gen = $reg_data['gender'];
 					$reg_mobile = $reg_data['mobile'];
 					$reg_email = (isset($reg_data['email'])) ? $reg_data['email'] : null;
@@ -349,8 +349,8 @@ header('Access-Control-Allow-Origin: *');
 				case 'create':
 					if(isset($this->_request['register_data'])){
 						$reg_is_deleted = 0;
-						$sql = "insert into ".self::registerTable."(registration_type,first_name,last_name,gender,mobile,email,street,city,state,zip,dob,age,marital_status,religion,prof_type,school,employer,business_type,other,guardian_type,guardian_name,guardian_mobile,address,dep_id,doct_id,hear_about_us,reason,reg_date,is_deleted)
-						values('$reg_type','$reg_fname','$reg_lname','$reg_gen','$reg_mobile','$reg_email',
+						$sql = "insert into ".self::registerTable."(registration_type,name,gender,mobile,email,street,city,state,zip,dob,age,marital_status,religion,prof_type,school,employer,business_type,other,guardian_type,guardian_name,guardian_mobile,address,dep_id,doct_id,hear_about_us,reason,reg_date,is_deleted)
+						values('$reg_type','$reg_name','$reg_gen','$reg_mobile','$reg_email',
 						'$reg_street','$reg_city','$reg_state','$reg_zip','$reg_dob','$reg_age',
 						'$reg_marital','$reg_religion','$reg_proType','$reg_school','$reg_employer','$reg_busi_type',
 						'$reg_others','$reg_guardian_type','$reg_guardian_name','$reg_guardian_mobile','$reg_guardian_address','$reg_dep_id',
@@ -369,13 +369,13 @@ header('Access-Control-Allow-Origin: *');
 					break;
 				case 'get':
 						$reg_data = isset($this->_request['register_data']) ? $this->_request['register_data'] : $this->_request;
-						$sql = "SELECT a.reg_id,a.reg_no,a.registration_type,a.first_name,a.last_name,a.gender,a.mobile,a.email,
+						$sql = "SELECT a.reg_id,a.reg_no,a.registration_type,a.name,a.gender,a.mobile,a.email,
 						a.street,a.city,a.state,a.zip,a.dob,a.age,a.marital_status,a.religion,
 						a.prof_type,a.school,a.employer,a.business_type,a.other,a.guardian_type,a.guardian_name,a.guardian_mobile,
 						a.address,a.dep_id,a.doct_id,a.hear_about_us,a.reason,a.reg_date,a.is_deleted,b.dep_name,c.doct_name,c.doct_price,c.doct_location
 						FROM ".self::registerTable." a
-						INNER JOIN department_table AS b ON a.dep_id = b.dep_id
-						INNER JOIN doctor_table AS c ON a.doct_id = c.doct_id
+						LEFT JOIN department_table AS b ON a.dep_id = b.dep_id
+						LEFT JOIN doctor_table AS c ON a.doct_id = c.doct_id
 						where a.is_deleted = 0";
 						if(isset($reg_data['id']))
 							$sql .= " AND a.reg_id=".$reg_data['id'];
@@ -385,8 +385,8 @@ header('Access-Control-Allow-Origin: *');
 							$register[$i]['id'] = $rows[$i]['reg_id'];
 							$register[$i]['reg_no'] = $rows[$i]['reg_no'];
 							$register[$i]['registration_type'] = $rows[$i]['registration_type'];
-							$register[$i]['first_name'] = $rows[$i]['first_name'];
-							$register[$i]['last_name'] = $rows[$i]['last_name'];
+							$register[$i]['name'] = $rows[$i]['name'];
+							// $register[$i]['last_name'] = $rows[$i]['last_name'];
 							$register[$i]['gender'] = $rows[$i]['gender'];
 							$register[$i]['mobile'] = $rows[$i]['mobile'];
 							$register[$i]['email'] = $rows[$i]['email'];
@@ -431,10 +431,7 @@ header('Access-Control-Allow-Origin: *');
 					case 'update':
 						$reg_data = isset($this->_request['register_data']) ? $this->_request['register_data'] : $this->_request;
 						$reg_id = $reg_data['id'];
-						$sql = "update ".self::registerTable." set first_name='$reg_fname'";
-						if(isset($reg_data['last_name'])){
-							$sql .=", last_name = '$reg_lname'";
-						}
+						$sql = "update ".self::registerTable." set name='$reg_name'";
 						if(isset($reg_data['registration_type'])){
 							$sql .=", registration_type = '$reg_type'";
 						}
@@ -457,13 +454,13 @@ header('Access-Control-Allow-Origin: *');
 							$sql .=", state = '$reg_state'";
 						}
 						if(isset($reg_data['zip'])){
-							$sql .=", zip = ".$reg_zip;
+							$sql .=", zip = '$reg_zip'";
 						}
 						if(isset($reg_data['dob'])){
 							$sql .=", dob = '$reg_dob'";
 						}
 						if(isset($reg_data['age'])){
-							$sql .=", age = ".$reg_age;
+							$sql .=", age = '$reg_age'";
 						}
 						if(isset($reg_data['marital_status'])){
 							$sql .=", marital_status = '$reg_marital'";
@@ -493,7 +490,7 @@ header('Access-Control-Allow-Origin: *');
 							$sql .=", guardian_name = '$reg_guardian_name'";
 						}
 						if(isset($reg_data['guardian_mobile'])){
-							$sql .=", guardian_mobile = ".$reg_guardian_mobile;
+							$sql .=", guardian_mobile = '$reg_guardian_mobile'";
 						}
 						if(isset($reg_data['address'])){
 							$sql .=", address = '$reg_guardian_address'";

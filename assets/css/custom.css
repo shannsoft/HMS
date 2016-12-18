@@ -184,15 +184,15 @@
 	text-align:right;
 }
 
-.item-col a.check{
+.option-icon a.check{
 	color: #40B726;
 	margin-right: 5px;
 }
-.item-col a.edit{
+.option-icon a.edit{
 	color: #38424C;
 	margin-right: 5px;
 }
-.item-col a.remove{
+.option-icon a.remove{
 	  color: #DB0E1E;
 		margin-right: 5px;
 }
@@ -208,4 +208,82 @@
 }
 .help-block{
 	color:red;
+}
+
+.table-style thead tr th{
+		padding: 15px!important;
+    background: #1a93c6;
+    color: #fff;
+		text-align:left;
+}
+.ng-table th.sortable .sort-indicator:before {
+    border-top: 4px solid #fff!important;
+}
+.ng-table th.sortable .sort-indicator:after, .ng-table th.sortable .sort-indicator:before {
+    border-color: #fff transparent !important;
+    opacity: initial!important;
+}
+.ng-table th.sortable .sort-indicator:after, .ng-table th.sortable .sort-indicator:before {
+    border-color: #fff transparent!important;
+}
+.ng-table-pagination {
+    margin-left: 15px;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #1a93c6;
+    border-color: #1a93c6;
+}
+#customize-menu .customize .customize-item .customize-colors li {
+    margin-bottom: 8px;
+}
+#customize-menu .customize .customize-item .customize-colors li img{
+	border: 2px solid #ababab;
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+}
+
+
+.sidebar-hide .main-wrapper{
+	display: block;
+}
+.sidebar-hide .main-wrapper .app{
+	  padding-left: 0;
+}
+.sidebar-hide .main-wrapper .app .sidebar {
+    left: -230px;
+}
+.sidebar-hide .main-wrapper .app .sidebar #customize-menu {
+    left: -230px;
+}
+.sidebar-hide .main-wrapper .app .main-header {
+    left:0px;
+}
+.sidebar-hide .main-wrapper .app .footer {
+    left:0px;
+}
+.sidebar-show .main-wrapper{
+	display: block;
+}
+.sidebar-show .main-wrapper .app{
+	  padding-left: 230px;
+}
+.sidebar-show .main-wrapper .app .sidebar {
+    left: 0px;
+}
+.sidebar-show .main-wrapper .app .sidebar #customize-menu {
+    left: 0;
+}
+.sidebar-show .main-wrapper .app .main-header {
+    left:230px;
+}
+.sidebar-show .main-wrapper .app .footer {
+    left:230px;
+}
+.ng-table th.sortable.sort-asc, .ng-table th.sortable.sort-desc {
+     background-color: #1a93c6 !important; 
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.75);
 }

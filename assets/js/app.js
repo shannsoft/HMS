@@ -1,4 +1,5 @@
 var config = window.config = {};
+var bodyClass = "sidebar-show";
 
 var $ref = $("#ref");
 //delay time configuration
@@ -62,6 +63,13 @@ var npSettings = {
 
 NProgress.configure(npSettings);
 $(function() {
+	setSameHeights();
+	var resizeTimer;
+	$(window).resize(function() {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(setSameHeights,50);
+	});
+
   $(document).on("TemplateLoaded",function(event, arg1, arg2) {
     $('.nav-profile > li > a').on('click', function() {
       var $el = $(this).next();
@@ -70,10 +78,27 @@ $(function() {
         selector: $el
       });
     });
-
   	$('#sidebar-collapse-btn').on('click', function(event){
   		event.preventDefault();
-  		$("#app").addClass("sidebar-open");
+			if(window.innerWidth > 991){
+				if(bodyClass == 'sidebar-show'){
+					setTimeout(function(){
+						$('body').removeClass('sidebar-show');
+						$('body').addClass('sidebar-hide');
+						bodyClass = 'sidebar-hide';
+					},60);
+				}
+				else{
+					setTimeout(function(){
+						$('body').removeClass('sidebar-hide');
+						$('body').addClass('sidebar-show');
+						bodyClass = 'sidebar-show';
+					},60);
+				}
+			}
+			else{
+				$("#app").addClass("sidebar-open");
+			}
   	});
 
   	$("#sidebar-overlay").on('click', function() {
@@ -82,6 +107,14 @@ $(function() {
     $("body").addClass("loaded");
   })
 });
+function setSameHeights() {
+	if(window.innerWidth > 990){
+		$('body').addClass(bodyClass);
+	}
+	else{
+		$('body').removeClass(bodyClass);
+	}
+}
 
 /***********************************************
 *        NProgress Settings

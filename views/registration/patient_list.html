@@ -16,7 +16,7 @@
              </div>
          </div>
      </div>
-     <div class="items-search">
+     <!-- <div class="items-search">
          <form class="form-inline">
               <div class="input-group"> <input type="text" ng-model="str" class="form-control boxed rounded-s" placeholder="Registration No...">
                 <span class="input-group-btn">
@@ -26,75 +26,31 @@
                </span>
            </div>
          </form>
-     </div>
+     </div> -->
    </div>
-    <div class="card items">
-      <ul class="item-list striped">
-        <li class="item item-list-header hidden-sm-down">
-          <div class="item-row">
-            <div class="item-col item-col-header item-col-title">
-              <div> <span>Name</span> </div>
-            </div>
-            <div class="item-col item-col-header item-col-author">
-              <div class="no-overflow"> <span>Registration No.</span> </div>
-            </div>
-            <div class="item-col item-col-header item-col-author">
-              <div class="no-overflow"> <span>Mobile</span> </div>
-            </div>
-            <div class="item-col item-col-header item-col-author">
-              <div class="no-overflow"> <span>Registration Type</span> </div>
-            </div>
-            <div class="item-col item-col-header item-col-author">
-              <div> <span>Registration Date</span> </div>
-            </div>
-            <div class="item-col item-col-header item-col-date">
-              <div> <span>Option</span> </div>
-            </div>
-          </div>
-        </li>
-        <li class="item" ng-repeat="reg in registerList" ng-hide="searchString != 'All' && searchString != reg.reg_no">
-          <div class="item-row">
-            <div class="item-col fixed pull-left item-col-title">
-              <div>
-                <a class="" ui-sref="detailsView({reg_id:reg.id})">
-                  <h4 class="item-title">{{reg.first_name+' '+reg.last_name}}</h4>
-                </a>
-              </div>
-            </div>
-            <div class="item-col item-col-author">
-              <div class="no-overflow">{{reg.reg_no}}</div>
-            </div>
-            <div class="item-col item-col-author">
-              <div class="no-overflow">{{reg.mobile}}</div>
-            </div>
-            <div class="item-col item-col-author">
-              <div class="no-overflow">{{reg.registration_type}}</div>
-            </div>
-            <div class="item-col item-col-author">
-              <div class="no-overflow">{{reg.reg_date}}</div>
-            </div>
-            <div class="item-col item-col-date">
-              <div class="">
-                <a class="check"  ui-sref="detailsView({reg_id:reg.id})"> <i class="fa fa-eye"></i> </a>
-                <a class="edit"  ui-sref="registerEdit({reg_id:reg.id})"> <i class="fa fa-pencil"></i> </a>
-                <a class="remove" ng-click="deleteRegister('md',reg.id)"> <i class="fa fa-trash-o "></i> </a>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+    <div class="card table-responsive">
+       <table ng-table="tableParams" class="table table-bordered table-style" show-filter="true">
+        <tr ng-repeat="reg in $data">
+            <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                {{reg.name}}</td>
+            <td title="'Registration No'" filter="{ reg_no: 'number'}" sortable="'reg_no'">
+                {{reg.reg_no}}</td>
+            <td title="'Mobile'" filter="{ mobile: 'number'}" sortable="'mobile'">
+                {{reg.mobile}}</td>
+            <td title="'Registration Type'" filter="{ registration_type: 'number'}" sortable="'registration_type'">
+                {{reg.registration_type}}</td>
+            <td title="'Registration Date'" filter="{ reg_date: 'number'}" sortable="'reg_date'">
+                {{reg.reg_date}}</td>
+            <td title="'Date of birth'" filter="{ dob: 'number'}" sortable="'dob'">
+                {{reg.dob}}</td>
+            <td title="'Option'" class="option-icon">
+              <a class="check"  ui-sref="detailsView({reg_id:reg.id})"> <i class="fa fa-eye"></i> </a>
+              <a class="edit"  ui-sref="registerEdit({reg_id:reg.id})"> <i class="fa fa-pencil"></i> </a>
+              <a class="remove" ng-click="deleteRegister('md',reg.id)"> <i class="fa fa-trash-o "></i> </a>
+            </td>
+        </tr>
+      </table>
     </div>
-   <!-- <nav class="text-xs-right">
-       <ul class="pagination">
-           <li class="page-item"> <a class="page-link" href="">Prev</a> </li>
-           <li class="page-item active"> <a class="page-link" href="">1</a> </li>
-           <li class="page-item"> <a class="page-link" href="">2</a> </li>
-           <li class="page-item"> <a class="page-link" href="">3</a> </li>
-           <li class="page-item"> <a class="page-link" href="">4</a> </li>
-           <li class="page-item"> <a class="page-link" href="">5</a> </li>
-           <li class="page-item"> <a class="page-link" href="">Next</a> </li>
-       </ul>
-   </nav> -->
 </article>
 <div class="modal fade in" id="confirm-modal"  ng-model="showModal">
     <div class="modal-dialog">

@@ -37,29 +37,25 @@
                     <th scope="row">Registration Type</th>
                     <td>{{registerDetails.registration_type}}</td>
                   </tr>
-                  <tr ng-if="registerDetails.first_name">
-                    <th scope="row">FIrst Name</th>
-                    <td>{{registerDetails.first_name}}</td>
-                  </tr>
-                  <tr ng-if="registerDetails.last_name">
-                    <th scope="row">Last Name</th>
-                    <td>{{registerDetails.last_name}}</td>
+                  <tr ng-if="registerDetails.name">
+                    <th scope="row">Name</th>
+                    <td>{{registerDetails.name}}</td>
                   </tr>
                   <tr  ng-if="registerDetails.street">
-                    <th scope="row">Street Name</th>
-                    <td>{{registerDetails.street}},,</td>
+                    <th scope="row">Address</th>
+                    <td>{{registerDetails.street}},{{registerDetails.city}},{{registerDetails.state}},{{registerDetails.zip}}</td>
                   </tr>
                   <tr ng-if="registerDetails.city">
-                    <th scope="row">City Name</th>
-                    <td>{{registerDetails.city}}</td>
+                    <th scope="row">Date of Birth</th>
+                    <td>{{registerDetails.dob}}</td>
                   </tr>
                   <tr ng-if="registerDetails.zip">
-                    <th scope="row">Zip code</th>
-                    <td>{{registerDetails.zip}}</td>
+                    <th scope="row">Age</th>
+                    <td>{{registerDetails.age}}</td>
                   </tr>
                   <tr ng-if="registerDetails.state">
-                    <th scope="row">State</th>
-                    <td>{{registerDetails.state}}</td>
+                    <th scope="row">Mobile</th>
+                    <td>{{registerDetails.mobile}}</td>
                   </tr>
                   <tr ng-if="registerDetails.gender">
                     <th scope="row">Gender</th>
