@@ -3,11 +3,12 @@ header('Access-Control-Allow-Origin: *');
 	require_once("Rest.inc.php");
 	class API extends REST {
 		public $data = "";
-		const DB_SERVER = "localhost";
-		const DB_USER = "root";
-		// const DB_USER = "goapps";
-		const DB_PASSWORD = "";
-		// const DB_PASSWORD = "goapps123";
+		// const DB_SERVER = "localhost";
+		const DB_SERVER = "103.21.58.5:3306";
+		// const DB_USER = "root";
+		const DB_USER = "teknobiz";
+		// const DB_PASSWORD = "";
+		const DB_PASSWORD = "Teknobiz@207";
 	  const DB = "hms_db";
 		// adding table names
 		const usersTable = "user_table";
@@ -124,6 +125,20 @@ header('Access-Control-Allow-Origin: *');
 		    return $randomString;
 		}
 		/*******************************************************/
+		/********This function use to get the header inof*******/
+		/*******************************************************/
+		public function getRequestHeaders() {
+				$headers = array();
+				foreach($_SERVER as $key => $value) {
+						if (substr($key, 0, 5) <> 'HTTP_') {
+								continue;
+						}
+						$header = str_replace(' ', '-', ucwords(str_replace('_', ' ', strtolower(substr($key, 5)))));
+						$headers[$header] = $value;
+				}
+				return $headers;
+		}
+		/*******************************************************/
 		/**********This function use for get the record*********/
 		/*******************************************************/
 		public function executeGenericDQLQuery($query){
@@ -226,7 +241,7 @@ header('Access-Control-Allow-Origin: *');
 	  /**************This function use for logout*************/
 	  /*******************************************************/
 		public function logout(){
-			$headers = apache_request_headers(); // to get all the headers
+			$headers = $this->getRequestHeaders(); // to get all the headers
 			$accessToken = $headers['Accesstoken'];
 			if($accessToken){
 				$sql = "update ".self::usersTable." set token='' where token='$accessToken'";
@@ -305,7 +320,7 @@ header('Access-Control-Allow-Origin: *');
 		/******This function use for register a patient*********/
 		/*******************************************************/
 		public function register(){
-			$headers = apache_request_headers(); // to get all the headers
+			$headers = $this->getRequestHeaders();
 			$accessToken = $headers['Accesstoken'];
 			if(!isset($this->_request['operation']))
 				$this->sendResponse(400,'Operation not Defined');

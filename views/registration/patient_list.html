@@ -33,15 +33,15 @@
         <tr ng-repeat="reg in $data">
             <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
                 {{reg.name}}</td>
-            <td title="'Registration No'" filter="{ reg_no: 'number'}" sortable="'reg_no'">
+            <td title="'Registration No'" filter="{ reg_no: 'text'}" sortable="'reg_no'">
                 {{reg.reg_no}}</td>
-            <td title="'Mobile'" filter="{ mobile: 'number'}" sortable="'mobile'">
+            <td title="'Mobile'" filter="{ mobile: 'text'}" sortable="'mobile'">
                 {{reg.mobile}}</td>
-            <td title="'Registration Type'" filter="{ registration_type: 'number'}" sortable="'registration_type'">
+            <td title="'Registration Type'" filter="{ registration_type: 'text'}" sortable="'registration_type'">
                 {{reg.registration_type}}</td>
-            <td title="'Registration Date'" filter="{ reg_date: 'number'}" sortable="'reg_date'">
+            <td title="'Registration Date'" filter="{ reg_date: 'text'}" sortable="'reg_date'">
                 {{reg.reg_date}}</td>
-            <td title="'Date of birth'" filter="{ dob: 'number'}" sortable="'dob'">
+            <td title="'Date of birth'" filter="{ dob: 'text'}" sortable="'dob'">
                 {{reg.dob}}</td>
             <td title="'Option'" class="option-icon">
               <a class="check"  ui-sref="detailsView({reg_id:reg.id})"> <i class="fa fa-eye"></i> </a>
