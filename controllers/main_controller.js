@@ -7,6 +7,9 @@ mainApp.controller('Main_Controller',function($scope,$rootScope,LoginService,$co
     }
   }
 
+  $scope.changeLanguage = function(lang){
+    $rootScope.language = lang
+  }
   /*******************************************************/
   /****This event is fired for javascript dependency******/
   /*******************************************************/
