@@ -54,9 +54,9 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
       if(pRes.data.statusCode == 200){
         $scope.registerList = pRes.data.data;
         var initialParams = {
-            count: 15 // initial page size
+            count: 10 // initial page size
         };
-        var initialSettings = {
+        var initialSettings = {                                                                                        
           counts: [],
           paginationMaxBlocks: 13,
           paginationMinBlocks: 1,
@@ -249,6 +249,7 @@ mainApp.controller('Registration_Controller',function($scope,$rootScope,$state,R
  /***********This is use to load all doctorlist*************/
  /***************************************************************************/
  $scope.loadDoctorlist = function(isEdit){
+   $scope.doctorDetails = {};
    RegisterService.doctor($scope.patient.dep_id).then(function(pRes) {
      if(pRes.status == 200){
         $scope.doctorlist = pRes.data.data;
