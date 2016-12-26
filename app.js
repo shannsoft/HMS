@@ -33,7 +33,7 @@ mainApp.config(function($stateProvider, $urlRouterProvider) {
          }
     })
     .state('newRegistration', {
-        templateUrl: 'views/registration/patient_registration.html',
+        templateUrl: 'views/registration/normal_registration.html',
         url: '/newRegistration',
         controller:"Registration_Controller",
         onEnter: function($localStorage, $state) {

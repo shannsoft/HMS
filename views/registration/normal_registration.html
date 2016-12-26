@@ -1,0 +1,392 @@
+<article class="content item-editor-page">
+    <div class="row">
+      <div class="col-md-12">
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <div class="header-block">
+                                    <p class="title"> Registration Type: General </p>
+                                </div>
+                            </div>
+                            <div class="card-block">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Valid Upto</label>
+                  <span>19/12/2017</span>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Language</label>
+                  <select class="form-control form-control-sm">
+                    <option>English</option>
+                    <option>Hindi</option>
+                    <option>ODiya</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-2 col-sm-offset-3">
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Reg. Date</label>
+                  <span>20/12/2017</span>
+                </div>
+              </div>
+            </div>
+            <div class="row m-t-10 m-b-10">
+              <div class="col-sm-12">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="reg-head-title">Patient</h3>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Prefix  <span class="text-red">*</span></label>
+                    <select class="form-control form-control-sm">
+                      <option>Select</option>
+                      <option>Select</option>
+                      <option>Select</option>
+                      <option>Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Gender  <span class="text-red">*</span></label>
+                  <div>
+                   <label>
+                        <input class="radio" name="type" type="radio"  value="female">
+                        <span>Female</span>
+                    </label>
+                    <label>
+                         <input class="radio" name="type" type="radio"  value="female">
+                         <span>Female</span>
+                     </label>
+                   </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Religion</label>
+                    <select class="form-control form-control-sm">
+                      <option>Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Nationality</label>
+                    <select class="form-control form-control-sm">
+                      <option>Select</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Patient Name <span class="text-red">*</span></label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Marital Status</label>
+                    <select class="form-control form-control-sm">
+                      <option>Single</option>
+                      <option>Married</option>
+                      <option>Widow</option>
+                      <option>Divorcy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Occupations</label>
+                    <select class="form-control form-control-sm">
+                      <option>Employee</option>
+                      <option>Worker</option>
+                      <option>student</option>
+                    </select>
+                </div>
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Alias Name </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Middle Name </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+                <div class="form-group"> <label for="inputEmail3" class="control-label">DOB </label>
+                  <p class="input-group w-full">
+                    <!-- <input type="date" class="form-control" ng-model="patient.dob" id="date1" placeholder="" ng-change="calculateAge()"> -->
+                    <input type="text" class="form-control" show-weeks="false" placeholder="Date Of Birth" ng-change="calculateAge(patient.dob)" uib-datepicker-popup ng-model="patient.dob" is-open="popup2.opened" datepicker-options="dateOptions" max-date="patient.reg_date" close-text="Close" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open()"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </p>
+                </div>
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Mobile</label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Last Name </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Age </label>
+                  <input type="date" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+                <div class="form-group"> <label for="inputEmail3" class="control-label">Email </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="row m-t-10 m-b-10">
+              <div class="col-sm-12">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="reg-head-title">NOK Details</h3>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Prefix  <span class="text-red">*</span></label>
+                    <select class="form-control form-control-sm">
+                      <option>Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Gender  <span class="text-red">*</span></label>
+                    <select class="form-control form-control-sm">
+                      <option>Select</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Relative Name </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Middle Name </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Last Name </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="row m-t-10 m-b-10">
+              <div class="col-sm-12">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="reg-head-title">Doctor Details</h3>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Department<span class="text-red">*</span></label>
+                    <select class="form-control form-control-sm">
+                      <option>Select</option>
+                      <option>Eye</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Doctor Name </label>
+                  <input type="text" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Doctor Location </label>
+                  <input type="text" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Fee </label>
+                  <input type="text" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="row m-t-10 m-b-10">
+              <div class="col-sm-12">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="reg-head-title">Contact Details</h3>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="control-label">Address Permanet</label>
+                  <div>
+                    <label>
+                      <input class="radio" name="radios" type="radio">
+                      <span>Urban</span>
+                    </label>
+                    <label>
+                      <input class="radio" type="radio" name="radios" checked="checked">
+                      <span>Rural</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group"> <label class="control-label m-r-5">Active</label>
+                  <label>
+                    <input class="checkbox" type="checkbox">
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">PO.Box </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">Country  <span class="text-red">*</span></label>
+                  <select class="form-control form-control-sm">
+                    <option>India</option>
+                  </select>
+                </div>
+                <div class="form-group"> <label for="name" class="control-label">Pin </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Street </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">State  <span class="text-red">*</span></label>
+                  <select class="form-control form-control-sm">
+                    <option>Odisha</option>
+                  </select>
+                </div>
+                <div class="form-group"> <label for="name" class="control-label">Phone </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group"> <label for="name" class="control-label">Locality </label>
+                  <input type="name" class="form-control form-control-sm" id="" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="control-label">City  <span class="text-red">*</span></label>
+                  <select class="form-control form-control-sm">
+                    <option>Bhubaneswar</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row m-t-10 m-b-10">
+              <div class="col-sm-12">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Servise Name</th>
+                      <th>Service Price</th>
+                      <th>Service Tax</th>
+                      <th>Patient Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>General Charge</td>
+                      <td>10</td>
+                      <td>0</td>
+                      <td class="text-right">10.00</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                      <table class="table table-striped reg-table">
+                        <tbody>
+                          <tr>
+                            <td>Net Amount</td>
+                            <td class="text-right">10.00</td>
+                          </tr>
+                          <tr>
+                            <td>Roundoff Amount</td>
+                            <td class="text-right">10.00</td>
+                          </tr>
+                          <tr>
+                            <td>Payble Amount</td>
+                            <td class="text-right">10.00</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row m-t-30">
+              <div class="col-sm-12">
+                <h3 class="reg-head-title">Payment Details</h3>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <div>
+                    <label>
+                      <input class="checkbox" type="checkbox">
+                      <span>Cash</span>
+                    </label>
+                    <label>
+                      <input class="checkbox" type="checkbox">
+                      <span>Check</span>
+                    </label>
+                    <label>
+                      <input class="checkbox" type="checkbox">
+                      <span>Credit card</span>
+                    </label>
+                    <label>
+                      <input class="checkbox" type="checkbox">
+                      <span>Bank Transfer</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Payment Type</th>
+                      <th>Amount COllected</th>
+                      <th>Currency</th>
+                      <th>Amount in Base Currency</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Pay by Cash</td>
+                      <td><input type="name" class="form-control form-control-sm" id="" placeholder=""></td>
+                      <td>
+                        <select class="form-control form-control-sm">
+                          <option>$</option>
+                        </select>
+                      </td>
+                      <td><input type="name" class="form-control form-control-sm" id="" placeholder=""></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row m-t-10 m-b-10">
+              <div class="col-sm-12">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 text-right">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </div>
+</article>
